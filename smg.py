@@ -45,7 +45,15 @@ def generate_smg():
             weapon_element_random_integer = random.randint(0, 5)
             weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
 
-    weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
+    # There are different Maliwan Titles for the different elements, so 
+    # have an if statement checking whether the barrel is manufactured
+    # by Maliwan to then know to have a slightly different way of
+    # assigning the Title of the weapon
+
+    if(barrel_manufacturer == 'Maliwan'):
+        weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer][weapon_element]
+    else:
+        weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
     weapon_stuff = {
 
@@ -95,9 +103,13 @@ weapon_names = {
             'Bandit': 'smig',
             'Dahl': 'rokgun',
             'Hyperion': 'Acurate smgg',
-            # Dunno what to do about the mutiple Maliwan titles for
-            # different elements, think about it later?
-            'Maliwan': '',
+            'Maliwan': {
+                'None': 'smig',
+                'Incendiary': 'Burny',
+                'Shock': 'Shoky',
+                'Corrosion': 'Barfy',
+                'Slag': 'Slagy'
+            },
             'Tediore': 'smig',
             'E-Tech': 'Plasma Caster'
         },
@@ -106,9 +118,13 @@ weapon_names = {
             'Bandit': 'SMG',
             'Dahl': 'Fox',
             'Hyperion': 'Falcon',
-            # Dunno what to do about the mutiple Maliwan titles for
-            # different elements, think about it later?
-            'Maliwan': '',
+            'Maliwan': {
+                'None': 'SMG',
+                'Incendiary': 'Beetle',
+                'Shock': 'Eel',
+                'Corrosion': 'Scorpion',
+                'Slag': 'Jackal'
+            },
             'Tediore': 'SMG',
             'E-Tech': 'Plasma Caster'
         },
@@ -117,9 +133,13 @@ weapon_names = {
             'Bandit': 'Projectile Comvergence',
             'Dahl': 'Presence',
             'Hyperion': 'Transmurdera',
-            # Dunno what to do about the mutiple Maliwan titles for
-            # different elements, think about it later?
-            'Maliwan': '',
+            'Maliwan': {
+                'None': 'Projectile Convergence',
+                'Incendiary': 'Backburner',
+                'Shock': 'Storm',
+                'Corrosion': 'Weisenheimer',
+                'Slag': 'Wellness'
+            },
             'Tediore': 'Projectile Convergence',
             'E-Tech': 'Plasma Caster'
         },
@@ -128,9 +148,13 @@ weapon_names = {
             'Bandit': 'SubMalevolent Grace',
             'Dahl': 'Trance',
             'Hyperion': 'Gospel',
-            # Dunno what to do about the mutiple Maliwan titles for
-            # different elements, think about it later?
-            'Maliwan': '',
+            'Maliwan': {
+                'None': '',
+                'Incendiary': 'Provacateur',
+                'Shock': 'Vexation',
+                'Corrosion': 'Venom',
+                'Slag': 'Revenant'
+            },
             'Tediore': 'SubMalevolent Grace',
             'E-Tech': 'Plasma Caster'
         },
@@ -139,9 +163,13 @@ weapon_names = {
             'Bandit': 'Subcompact MG',
             'Dahl': 'Special',
             'Hyperion': 'Ace',
-            # Dunno what to do about the mutiple Maliwan titles for
-            # different elements, think about it later?
-            'Maliwan': '',
+            'Maliwan': {
+                'None': 'Subcompact MG',
+                'Incendiary': 'Kindle',
+                'Shock': 'Spark',
+                'Corrosion': 'Green',
+                'Slag': 'Chaff'
+            },
             'Tediore': 'Subcompact MG',
             'E-Tech': 'Plasma Caster'       
         }
