@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_pistol():
+def generate_pistol(rarity):
     # Still need to generate:
 
     # 4 manufacturers; 1 for each different part of the weapon
@@ -55,12 +55,29 @@ def generate_pistol():
 
     weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
+    # Now check to see if the pistol should spawn with an accessory
+
+    if(rarity == 'White'):
+        spawn_with_accessory = False
+    elif(rarity == 'Green' or rarity == 'Blue'):
+        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
+    else:
+        # Purple and above ALWAYS spawn with an accessory
+        spawn_with_accessory = True
+
+    if(spawn_with_accessory is True):
+        pistol_accessory_random_integer = random.randint(0,6)
+        weapon_accessory = choose_pistol_accessory(pistol_accessory_random_integer)
+    else:
+        weapon_accessory = 'none'
+
     weapon_stuff = {
 
         'weapon_type': 'pistol',
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title
+        'weapon_title': weapon_title,
+        'weapon_accessory': weapon_accessory
 
     }
 
@@ -90,6 +107,18 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
         valid_combination = (manufacturer == 'Torgue')
 
     return valid_combination
+
+def choose_pistol_accessory(integer):
+    switcher = {
+        0: 'melee',
+        1: 'accuracy',
+        2: 'double_bullets',
+        3: 'stability',
+        4: 'magazine_size',
+        5: 'damage',
+        6: 'fire_rate'
+    }
+    return switcher.get(integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of a pistol

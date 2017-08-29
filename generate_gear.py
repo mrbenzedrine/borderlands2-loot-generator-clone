@@ -62,7 +62,7 @@ def generate_weapon(rarity, level):
     weapon_type_random_integer = random.randint(0, 5)
     weapon_type = choose_weapon_type(weapon_type_random_integer)
 
-    weapon_stuff = generate_weapon_type(weapon_type)()
+    weapon_stuff = generate_weapon_type(weapon_type)(rarity)
 
     print(weapon_stuff)
 

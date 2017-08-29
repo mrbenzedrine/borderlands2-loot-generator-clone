@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_smg():
+def generate_smg(rarity):
     # There are 5 smg manuafcturers
 
     body_random_integer = random.randint(0,4)
@@ -58,12 +58,29 @@ def generate_smg():
     else:
         weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
+    # Now check to see if the smg should spawn with an accessory
+
+    if(rarity == 'White'):
+        spawn_with_accessory = False
+    elif(rarity == 'Green' or rarity == 'Blue'):
+        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
+    else:
+        # Purple and above ALWAYS spawn with an accessory
+        spawn_with_accessory = True
+
+    if(spawn_with_accessory is True):
+        smg_accessory_random_integer = random.randint(0,5)
+        weapon_accessory = choose_smg_accessory(smg_accessory_random_integer)
+    else:
+        weapon_accessory = 'none'
+
     weapon_stuff = {
 
         'weapon_type': 'smg',
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title
+        'weapon_title': weapon_title,
+        'weapon_accessory': weapon_accessory
 
     }
 
@@ -90,6 +107,19 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
         valid_combination = (element != 'None')
 
     return valid_combination
+
+def choose_smg_accessory(integer):
+    # The attribute values describe the stat of the gun that is increased
+    # by the corresponding accessory
+    switcher = {
+        0: 'melee',
+        1: 'accuracy',
+        2: 'damage',
+        3: 'bullet_speed',
+        4: 'stability',
+        5: 'reload_speed'
+    }
+    return switcher.get(integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of an SMG

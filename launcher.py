@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_launcher():
+def generate_launcher(rarity):
     # 5 launcher manufacturers
 
     body_random_integer = random.randint(0,4)
@@ -53,12 +53,29 @@ def generate_launcher():
 
     weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
+    # Now check to see if the launcher should spawn with an accessory
+
+    if(rarity == 'White'):
+        spawn_with_accessory = False
+    elif(rarity == 'Green' or rarity == 'Blue'):
+        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
+    else:
+        # Purple and above ALWAYS spawn with an accessory
+        spawn_with_accessory = True
+
+    if(spawn_with_accessory is True):
+        launcher_accessory_random_integer = random.randint(0,7)
+        weapon_accessory = choose_launcher_accessory(launcher_accessory_random_integer)
+    else:
+        weapon_accessory = 'none'
+
     weapon_stuff = {
 
         'weapon_type': 'launcher',
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title
+        'weapon_title': weapon_title,
+        'weapon_accessory': weapon_accessory
 
     }
 
@@ -93,6 +110,19 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
     valid_combination = test_1 and test_2 and test_3
 
     return valid_combination
+
+def choose_launcher_accessory(integer):
+    switcher = {
+        0: 'magazine_size',
+        1: 'accuracy',
+        2: 'melee',
+        3: 'reload_speed',
+        4: 'weapon_swap_speed',
+        5: 'rocket_speed',
+        6: 'fire_rate',
+        7: 'damage'
+    }
+    return switcher.get(integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of a launcher

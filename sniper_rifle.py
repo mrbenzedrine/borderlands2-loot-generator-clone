@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_sniper_rifle():
+def generate_sniper_rifle(rarity):
     # 5 sniper rifle manufacturers
 
     body_random_integer = random.randint(0,4)
@@ -49,12 +49,29 @@ def generate_sniper_rifle():
 
     weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
+    # Now check to see if the sniper rifle should spawn with an accessory
+
+    if(rarity == 'White'):
+        spawn_with_accessory = False
+    elif(rarity == 'Green' or rarity == 'Blue'):
+        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
+    else:
+        # Purple and above ALWAYS spawn with an accessory
+        spawn_with_accessory = True
+
+    if(spawn_with_accessory is True):
+        sniper_rifle_accessory_random_integer = random.randint(0,6)
+        weapon_accessory = choose_sniper_rifle_accessory(sniper_rifle_accessory_random_integer)
+    else:
+        weapon_accessory = 'none'
+
     weapon_stuff = {
 
         'weapon_type': 'sniper_rifle',
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title
+        'weapon_title': weapon_title,
+        'weapon_accessory': weapon_accessory
 
     }
 
@@ -85,6 +102,18 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
     valid_combination = test_1 and test_2
 
     return valid_combination
+
+def choose_sniper_rifle_accessory(integer):
+    switcher = {
+        0: 'melee',
+        1: 'accuracy',
+        2: 'critical_damage',
+        3: 'stability',
+        4: 'magazine_size',
+        5: 'fire_rate',
+        6: 'damage'
+    }
+    return switcher.get(integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of a sniper rifle

@@ -1,3 +1,5 @@
+import random
+
 def choose_weapon_element(integer):
     switcher = {
         0: "None",
@@ -43,3 +45,17 @@ def is_general_weapon_element_combo_valid(weapon_type, weapon_element):
     # than simply checking and then regenrating if the check fails?
 
     return test_1 and test_2
+
+def green_blue_rarity_spawn_with_accessory():
+    # Green and blue rarity weapons have a chance to spawn with an
+    # accessory; don't know the exact probability currently so just
+    # set it to 1/3 for now
+
+    spawn_with_accesory_chance = random.randint(0,2)
+
+    if(spawn_with_accesory_chance == 0):
+        spawn_with_accesory = True
+    else:
+        spawn_with_accesory = False
+
+    return spawn_with_accesory

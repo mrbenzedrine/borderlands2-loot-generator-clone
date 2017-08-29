@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_shotgun():
+def generate_shotgun(rarity):
     # 5 shotgun manufacturers
 
     body_random_integer = random.randint(0,4)
@@ -51,12 +51,29 @@ def generate_shotgun():
 
     weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
+    # Now check to see if the shotgun should spawn with an accessory
+
+    if(rarity == 'White'):
+        spawn_with_accessory = False
+    elif(rarity == 'Green' or rarity == 'Blue'):
+        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
+    else:
+        # Purple and above ALWAYS spawn with an accessory
+        spawn_with_accessory = True
+
+    if(spawn_with_accessory is True):
+        shotgun_accessory_random_integer = random.randint(0,6)
+        weapon_accessory = choose_shotgun_accessory(shotgun_accessory_random_integer)
+    else:
+        weapon_accessory = 'none'
+
     weapon_stuff = {
 
         'weapon_type': 'shotgun',
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title
+        'weapon_title': weapon_title,
+        'weapon_accessory': weapon_accessory
 
     }
 
@@ -82,6 +99,17 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
 
     return valid_combination    
 
+def choose_shotgun_accessory(integer):
+    switcher = {
+        0: 'melee',
+        1: 'magazine_size',
+        2: 'projectile_count',
+        3: 'bullet_speed',
+        4: 'critical_damage',
+        5: 'reload_speed',
+        6: 'stability'
+    }
+    return switcher.get(integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of a shotgun
