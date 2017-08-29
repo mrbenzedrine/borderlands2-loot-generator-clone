@@ -8,18 +8,21 @@ def generate_assault_rifle():
     barrel_random_integer = random.randint(0,4)
     grip_random_integer = random.randint(0,4)
     scope_random_integer = random.randint(0,4)
+    stock_random_integer = random.randint(0,4)
 
     body_manufacturer = choose_assault_rifle_part_manufacturer(body_random_integer)
     barrel_manufacturer = choose_assault_rifle_part_manufacturer(barrel_random_integer)
     grip_manufacturer = choose_assault_rifle_part_manufacturer(grip_random_integer)
     scope_manufacturer = choose_assault_rifle_part_manufacturer(scope_random_integer)
+    stock_manufacturer = choose_assault_rifle_part_manufacturer(stock_random_integer)
 
     weapon_parts = {
 
         'body': body_manufacturer,
         'barrel': barrel_manufacturer,
         'grip': grip_manufacturer,
-        'scope': scope_manufacturer
+        'scope': scope_manufacturer,
+        'stock': stock_manufacturer
 
     }
 
