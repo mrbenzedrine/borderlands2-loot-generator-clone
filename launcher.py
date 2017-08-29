@@ -10,11 +10,11 @@ def generate_launcher():
     scope_random_integer = random.randint(0,4)
     exhaust_random_integer = random.randint(0,4)
 
-    body_manufacturer = choose_sniper_rifle_part_manufacturer(body_random_integer)
-    barrel_manufacturer = choose_sniper_rifle_part_manufacturer(barrel_random_integer)
-    grip_manufacturer = choose_sniper_rifle_part_manufacturer(grip_random_integer)
-    scope_manufacturer = choose_sniper_rifle_part_manufacturer(scope_random_integer)
-    exhaust_manufacturer = choose_sniper_rifle_part_manufacturer(exhaust_random_integer)
+    body_manufacturer = choose_launcher_part_manufacturer(body_random_integer)
+    barrel_manufacturer = choose_launcher_part_manufacturer(barrel_random_integer)
+    grip_manufacturer = choose_launcher_part_manufacturer(grip_random_integer)
+    scope_manufacturer = choose_launcher_part_manufacturer(scope_random_integer)
+    exhaust_manufacturer = choose_launcher_part_manufacturer(exhaust_random_integer)
 
     weapon_parts = {
 
@@ -64,7 +64,7 @@ def generate_launcher():
 
     return weapon_stuff
 
-def choose_sniper_rifle_part_manufacturer(integer):
+def choose_launcher_part_manufacturer(integer):
     switcher = {
         0: 'Bandit',
         1: 'Maliwan',
