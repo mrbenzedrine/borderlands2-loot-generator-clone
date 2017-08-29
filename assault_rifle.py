@@ -4,17 +4,11 @@ import random
 def generate_assault_rifle(rarity):
     # 5 assault rifle manufacturers
 
-    body_random_integer = random.randint(0,4)
-    barrel_random_integer = random.randint(0,4)
-    grip_random_integer = random.randint(0,4)
-    scope_random_integer = random.randint(0,4)
-    stock_random_integer = random.randint(0,4)
-
-    body_manufacturer = choose_assault_rifle_part_manufacturer(body_random_integer)
-    barrel_manufacturer = choose_assault_rifle_part_manufacturer(barrel_random_integer)
-    grip_manufacturer = choose_assault_rifle_part_manufacturer(grip_random_integer)
-    scope_manufacturer = choose_assault_rifle_part_manufacturer(scope_random_integer)
-    stock_manufacturer = choose_assault_rifle_part_manufacturer(stock_random_integer)
+    body_manufacturer = choose_assault_rifle_part_manufacturer()
+    barrel_manufacturer = choose_assault_rifle_part_manufacturer()
+    grip_manufacturer = choose_assault_rifle_part_manufacturer()
+    scope_manufacturer = choose_assault_rifle_part_manufacturer()
+    stock_manufacturer = choose_assault_rifle_part_manufacturer()
 
     weapon_parts = {
 
@@ -33,8 +27,7 @@ def generate_assault_rifle(rarity):
     elif(weapon_overall_manufacturer == 'Torgue'):
         weapon_element = 'Explosion'
     else:
-        weapon_element_random_integer = random.randint(0, 5)
-        weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
+        weapon_element = general_weapon_functions.choose_weapon_element()
  
     # Now need to check validity of the weapon element combo
 
@@ -46,8 +39,7 @@ def generate_assault_rifle(rarity):
         else:
             print("Invalid weapon element combo")
             print("Assault rifle is ", weapon_element)
-            weapon_element_random_integer = random.randint(0, 5)
-            weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
+            weapon_element = general_weapon_functions.choose_weapon_element()
 
     weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
 
@@ -62,8 +54,7 @@ def generate_assault_rifle(rarity):
         spawn_with_accessory = True
 
     if(spawn_with_accessory is True):
-        assault_rifle_accessory_random_integer = random.randint(0,6)
-        weapon_accessory = choose_assault_rifle_accessory(assault_rifle_accessory_random_integer)
+        weapon_accessory = choose_assault_rifle_accessory()
     else:
         weapon_accessory = 'none'
 
@@ -81,7 +72,8 @@ def generate_assault_rifle(rarity):
 
 
 
-def choose_assault_rifle_part_manufacturer(integer):
+def choose_assault_rifle_part_manufacturer():
+    random_integer = random.randint(0,4)
     switcher = {
         0: 'Bandit',
         1: 'Dahl',
@@ -89,7 +81,7 @@ def choose_assault_rifle_part_manufacturer(integer):
         3: 'Torgue',
         4: 'Vladof'
     }
-    return switcher.get(integer, 'nothing')
+    return switcher.get(random_integer, 'nothing')
 
 def is_manufacturer_element_combo_valid(manufacturer, element):
     # Only Torgue assault rifles can be explosive
@@ -101,7 +93,8 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
 
     return valid_combination    
 
-def choose_assault_rifle_accessory(integer):
+def choose_assault_rifle_accessory():
+    random_integer = random.randint(0,6)
     switcher = {
         0: 'damage',
         1: 'fire_rate',
@@ -111,7 +104,7 @@ def choose_assault_rifle_accessory(integer):
         5: 'magazine_size',
         6: 'accuracy'
     }
-    return switcher.get(integer, 'none')
+    return switcher.get(random_integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of an assualt rifle

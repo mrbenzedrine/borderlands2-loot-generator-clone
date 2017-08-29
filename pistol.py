@@ -7,18 +7,10 @@ def generate_pistol(rarity):
     # 4 manufacturers; 1 for each different part of the weapon
     # The element of the gun
 
-    # There are 8 pistol manufacturers, hence a random integer ebwteen
-    # 0 and 7
-
-    body_random_integer = random.randint(0,7)
-    barrel_random_integer = random.randint(0,7)
-    grip_random_integer = random.randint(0,7)
-    scope_random_integer = random.randint(0,7)
-
-    body_manufacturer =  choose_pistol_part_manufacturer(body_random_integer)
-    barrel_manufacturer = choose_pistol_part_manufacturer(barrel_random_integer)
-    grip_manufacturer = choose_pistol_part_manufacturer(grip_random_integer)
-    scope_manufacturer = choose_pistol_part_manufacturer(scope_random_integer)
+    body_manufacturer =  choose_pistol_part_manufacturer()
+    barrel_manufacturer = choose_pistol_part_manufacturer()
+    grip_manufacturer = choose_pistol_part_manufacturer()
+    scope_manufacturer = choose_pistol_part_manufacturer()
 
     weapon_parts = {
 
@@ -36,8 +28,7 @@ def generate_pistol(rarity):
     elif(weapon_overall_manufacturer == 'Torgue'):
         weapon_element = 'Explosion'
     else:
-        weapon_element_random_integer = random.randint(0, 5)
-        weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
+        weapon_element = general_weapon_functions.choose_weapon_element()
 
     # Now need to check validity of the weapon element combo
 
@@ -49,8 +40,7 @@ def generate_pistol(rarity):
         else:
             print("Invalid weapon element combo")
             print("Pistol is ", weapon_element)
-            weapon_element_random_integer = random.randint(0, 5)
-            weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
+            weapon_element = general_weapon_functions.choose_weapon_element()
 
 
     weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
@@ -66,8 +56,7 @@ def generate_pistol(rarity):
         spawn_with_accessory = True
 
     if(spawn_with_accessory is True):
-        pistol_accessory_random_integer = random.randint(0,6)
-        weapon_accessory = choose_pistol_accessory(pistol_accessory_random_integer)
+        weapon_accessory = choose_pistol_accessory()
     else:
         weapon_accessory = 'none'
 
@@ -83,7 +72,8 @@ def generate_pistol(rarity):
 
     return weapon_stuff
 
-def choose_pistol_part_manufacturer(integer):
+def choose_pistol_part_manufacturer():
+    random_integer = random.randint(0,7)
     switcher = {
         0: 'Bandit',
         1: 'Dahl',
@@ -94,7 +84,7 @@ def choose_pistol_part_manufacturer(integer):
         6: 'Torgue',
         7: 'Vladof'
     }
-    return switcher.get(integer, "nothing") 
+    return switcher.get(random_integer, "nothing") 
     # return the string "nothing" as the default option
 
 def is_manufacturer_element_combo_valid(manufacturer, element):
@@ -108,7 +98,8 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
 
     return valid_combination
 
-def choose_pistol_accessory(integer):
+def choose_pistol_accessory():
+    random_integer = random.randint(0,6)
     switcher = {
         0: 'melee',
         1: 'accuracy',
@@ -118,7 +109,7 @@ def choose_pistol_accessory(integer):
         5: 'damage',
         6: 'fire_rate'
     }
-    return switcher.get(integer, 'none')
+    return switcher.get(random_integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of a pistol

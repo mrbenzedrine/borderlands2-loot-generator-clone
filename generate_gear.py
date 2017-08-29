@@ -59,8 +59,7 @@ def generate_weapon(rarity, level):
     # There are 6 weapon types, so choose a random number between
     # 0 and 5
 
-    weapon_type_random_integer = random.randint(0, 5)
-    weapon_type = choose_weapon_type(weapon_type_random_integer)
+    weapon_type = choose_weapon_type()
 
     weapon_stuff = generate_weapon_type(weapon_type)(rarity)
 
@@ -69,16 +68,17 @@ def generate_weapon(rarity, level):
     return Gun(weapon_type, weapon_stuff['weapon_parts'], rarity, weapon_stuff['weapon_element'], level, weapon_stuff['weapon_title'])
 
 
-def choose_weapon_type(integer):
-  switcher = {
+def choose_weapon_type():
+    random_integer = random.randint(0,5)
+    switcher = {
       0: 'pistol',
       1: 'smg',
       2: 'assualt_rifle',
       3: 'sniper_rifle',
       4: 'shotgun',
       5: 'launcher'
-  }
-  return switcher.get(integer, "nothing")
+    }
+    return switcher.get(random_integer, "nothing")
 
 def generate_weapon_type(weapon_type):
     switcher = {

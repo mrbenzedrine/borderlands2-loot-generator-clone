@@ -4,17 +4,11 @@ import random
 def generate_smg(rarity):
     # There are 5 smg manuafcturers
 
-    body_random_integer = random.randint(0,4)
-    barrel_random_integer = random.randint(0,4)
-    grip_random_integer = random.randint(0,4)
-    scope_random_integer = random.randint(0,4)
-    stock_random_integer = random.randint(0,4)
-
-    body_manufacturer = choose_smg_part_manufacturer(body_random_integer)
-    barrel_manufacturer = choose_smg_part_manufacturer(barrel_random_integer)
-    grip_manufacturer = choose_smg_part_manufacturer(grip_random_integer)
-    scope_manufacturer = choose_smg_part_manufacturer(scope_random_integer)
-    stock_manufacturer = choose_smg_part_manufacturer(stock_random_integer)
+    body_manufacturer = choose_smg_part_manufacturer()
+    barrel_manufacturer = choose_smg_part_manufacturer()
+    grip_manufacturer = choose_smg_part_manufacturer()
+    scope_manufacturer = choose_smg_part_manufacturer()
+    stock_manufacturer = choose_smg_part_manufacturer()
 
     weapon_parts = {
 
@@ -32,8 +26,7 @@ def generate_smg(rarity):
     # elements that can be set prior to the random generation of an
     # element
 
-    weapon_element_random_integer = random.randint(0, 5)
-    weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
+    weapon_element = general_weapon_functions.choose_weapon_element()
 
     # Now need to check validity of the weapon element combo
 
@@ -45,8 +38,7 @@ def generate_smg(rarity):
         else:
             print("Invalid weapon element combo")
             print("SMG is ", weapon_element)
-            weapon_element_random_integer = random.randint(0, 5)
-            weapon_element = general_weapon_functions.choose_weapon_element(weapon_element_random_integer)
+            weapon_element = general_weapon_functions.choose_weapon_element()
 
     # There are different Maliwan Titles for the different elements, so 
     # have an if statement checking whether the barrel is manufactured
@@ -69,8 +61,7 @@ def generate_smg(rarity):
         spawn_with_accessory = True
 
     if(spawn_with_accessory is True):
-        smg_accessory_random_integer = random.randint(0,5)
-        weapon_accessory = choose_smg_accessory(smg_accessory_random_integer)
+        weapon_accessory = choose_smg_accessory()
     else:
         weapon_accessory = 'none'
 
@@ -87,7 +78,8 @@ def generate_smg(rarity):
     return weapon_stuff
 
 
-def choose_smg_part_manufacturer(integer):
+def choose_smg_part_manufacturer():
+    random_integer = random.randint(0,4)
     switcher = {
         0: 'Bandit',
         1: 'Dahl',
@@ -95,7 +87,7 @@ def choose_smg_part_manufacturer(integer):
         3: 'Maliwan',
         4: 'Tediore'
     }
-    return switcher.get(integer, 'nothing')
+    return switcher.get(random_integer, 'nothing')
 
 
 def is_manufacturer_element_combo_valid(manufacturer, element):
@@ -108,9 +100,10 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
 
     return valid_combination
 
-def choose_smg_accessory(integer):
+def choose_smg_accessory():
     # The attribute values describe the stat of the gun that is increased
     # by the corresponding accessory
+    random_integer = random.randint(0,5)
     switcher = {
         0: 'melee',
         1: 'accuracy',
@@ -119,7 +112,7 @@ def choose_smg_accessory(integer):
         4: 'stability',
         5: 'reload_speed'
     }
-    return switcher.get(integer, 'none')
+    return switcher.get(random_integer, 'none')
 
 # Dictionary containing the different possibilities for the Prefix and
 # Title of an SMG
