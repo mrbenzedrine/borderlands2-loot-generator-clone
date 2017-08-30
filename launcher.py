@@ -57,8 +57,14 @@ def generate_launcher(rarity):
 
     if(spawn_with_accessory is True):
         weapon_accessory = choose_launcher_accessory()
+        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
+
+        weapon_full_name = weapon_prefix + ' ' + weapon_title
     else:
         weapon_accessory = 'none'
+        weapon_prefix = ''
+
+        weapon_full_name = weapon_title
 
     weapon_stuff = {
 
@@ -66,7 +72,9 @@ def generate_launcher(rarity):
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
         'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory
+        'weapon_accessory': weapon_accessory,
+        'weapon_prefix': weapon_prefix,
+        'weapon_full_name': weapon_full_name
 
     }
 
@@ -123,6 +131,61 @@ def choose_launcher_accessory():
 weapon_names = {
     
     'prefix': {
+
+        'Bandit': {
+            'magazine_size': 'Roket Pawket',
+            'accuracy': 'Snyper',
+            'melee': 'gratuitius',
+            'reload_speed': 'fast actions',
+            'weapon_swap_speed': 'Quick Drawler',
+            'rocket_speed': 'Speeedee',
+            'fire_rate': 'Rappid',
+            'damage': 'Big'
+        },
+
+        'Maliwan': {
+            'magazine_size': 'Plenteous',
+            'accuracy': 'Pertinenet',
+            'melee': 'Proximate',
+            'reload_speed': 'Prudential',
+            'weapon_swap_speed': 'Parataxis',
+            'rocket_speed': 'Punitory',
+            'fire_rate': 'Predacious',
+            'damage': 'Puissant'
+        },
+
+        'Tediore': {
+            'magazine_size': 'Bonus',
+            'accuracy': 'Ultraprecise',
+            'melee': 'Multi-Use',
+            'reload_speed': 'Stocking',
+            'weapon_swap_speed': 'Swapper\'s',
+            'rocket_speed': 'Rocked Speed',
+            'fire_rate': 'Bustling',
+            'damage': 'Large'
+        },
+
+        'Torgue': {
+            'magazine_size': 'Deep a',
+            'accuracy': 'gaa dunk ga',
+            'melee': 'pokee doke',
+            'reload_speed': 'dippity',
+            'weapon_swap_speed': 'twap a',
+            'rocket_speed': 'fidle dee',
+            'fire_rate': 'dum pa',
+            'damage': 'derp'
+        },
+
+        'Vladof': {
+            'magazine_size': 'Worker\'s',
+            'accuracy': 'Victorious',
+            'melee': 'Revolt',
+            'reload_speed': 'Ruthless',
+            'weapon_swap_speed': 'Moscovite\'s',
+            'rocket_speed': 'Paritisan',
+            'fire_rate': 'Turbulent',
+            'damage': 'Rugged'
+        }
 
     },
 

@@ -32,7 +32,7 @@ import weapons_stats_modifiers
 
 class Gun:
 
-    def __init__(self, type, parts, rarity, element, level, title):
+    def __init__(self, type, parts, rarity, element, level, title, prefix):
 
         # type: string; tells us the type of gun, 'pistol', 
         # 'SMG' etc
@@ -80,6 +80,7 @@ class Gun:
         }
 
         self.title = title
+        self.prefix = prefix
 
     def calculate_damage(self):
         return weapons_stats_modifiers.weapons_parts_stats_modifiers['body'][self.parts['body']]*15*weapons_stats_modifiers.level_modifer_function(self.level)*weapons_stats_modifiers.rarity_modifiers[self.rarity]

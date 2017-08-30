@@ -55,8 +55,14 @@ def generate_shotgun(rarity):
 
     if(spawn_with_accessory is True):
         weapon_accessory = choose_shotgun_accessory()
+        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
+
+        weapon_full_name = weapon_prefix + ' ' + weapon_title
     else:
         weapon_accessory = 'none'
+        weapon_prefix = ''
+
+        weapon_full_name = weapon_title
 
     weapon_stuff = {
 
@@ -64,7 +70,9 @@ def generate_shotgun(rarity):
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
         'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory
+        'weapon_accessory': weapon_accessory,
+        'weapon_prefix': weapon_prefix,
+        'weapon_full_name': weapon_full_name
 
     }
 
@@ -110,6 +118,56 @@ def choose_shotgun_accessory():
 weapon_names = {
     
     'prefix': {
+
+        'Bandit': {
+            'melee': 'Slising',
+            'magazine_size': 'Drumed',
+            'projectile_count': 'Redy Stedy',
+            'bullet_speed': 'Sketer',
+            'critical_damage': 'Critikal Hit',
+            'reload_speed': 'Quick Loadeder',
+            'stability': 'Assssult'
+        },
+
+        'Hyperion': {
+            'melee': 'Restructuring',
+            'magazine_size': 'Scalable',
+            'projectile_count': 'Social',
+            'bullet_speed': 'Potential',
+            'critical_damage': 'Critical',
+            'reload_speed': 'Reactive',
+            'stability': 'Practicable'
+        },
+
+        'Jakobs': {
+            'melee': 'Barbed',
+            'magazine_size': 'Sidewinder',
+            'projectile_count': 'Well Kept',
+            'bullet_speed': 'Huntin\'',
+            'critical_damage': 'Doc\'s',
+            'reload_speed': 'Texas',
+            'stability': 'Rustler\'s'
+        },
+
+        'Tediore': {
+            'melee': 'Swiss',
+            'magazine_size': 'Extra Large',
+            'projectile_count': 'New and Improved',
+            'bullet_speed': 'Original',
+            'critical_damage': 'Royal',
+            'reload_speed': 'Basic',
+            'stability': 'Gentle'
+        },
+
+        'Torgue': {
+            'melee': 'Bad Touch',
+            'magazine_size': 'Desperate',
+            'projectile_count': 'Sinewy',
+            'bullet_speed': 'Potent',
+            'critical_damage': 'Juicy',
+            'reload_speed': 'Impetuous',
+            'stability': 'Casual'
+        }
 
     },
 

@@ -65,7 +65,7 @@ def generate_weapon(rarity, level):
 
     print(weapon_stuff)
 
-    return Gun(weapon_type, weapon_stuff['weapon_parts'], rarity, weapon_stuff['weapon_element'], level, weapon_stuff['weapon_title'])
+    return Gun(weapon_type, weapon_stuff['weapon_parts'], rarity, weapon_stuff['weapon_element'], level, weapon_stuff['weapon_title'], weapon_stuff['weapon_prefix'])
 
 
 def choose_weapon_type():

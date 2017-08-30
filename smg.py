@@ -62,8 +62,15 @@ def generate_smg(rarity):
 
     if(spawn_with_accessory is True):
         weapon_accessory = choose_smg_accessory()
+        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
+
+        weapon_full_name = weapon_prefix + ' ' + weapon_title
     else:
         weapon_accessory = 'none'
+        weapon_prefix = '' # not sure what to put if there is no prefix,
+        # so just put an empty string in for now
+
+        weapon_full_name = weapon_title
 
     weapon_stuff = {
 
@@ -71,7 +78,9 @@ def generate_smg(rarity):
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
         'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory
+        'weapon_accessory': weapon_accessory,
+        'weapon_prefix': weapon_prefix,
+        'weapon_full_name': weapon_full_name
 
     }
 
@@ -121,6 +130,50 @@ weapon_names = {
     
     'prefix': {
 
+        'Bandit': {
+            'melee': 'Cuting',
+            'accuracy': 'Akurate',
+            'damage': 'Murdering',
+            'bullet_speed': 'Bulets Go Fasterified',
+            'stability': 'Ballanced',
+            'reload_speed': 'Agresive'
+        },
+
+        'Dahl': {
+            'melee': 'Bladed',
+            'accuracy': 'Deft',
+            'damage': 'Stopping',
+            'bullet_speed': 'Flying',
+            'stability': 'Stoic',
+            'reload_speed': 'Skirmish'
+        },
+
+        'Hyperion': {
+            'melee': 'Cutting Edge',
+            'accuracy': 'Analytical',
+            'damage': 'Rightsizing',
+            'bullet_speed': 'Proactive',
+            'stability': 'Corporate',
+            'reload_speed': 'Social'
+        },
+
+        'Maliwan': {
+            'melee': 'Acuminious',
+            'accuracy': 'Guieless',
+            'damage': 'Consumate',
+            'bullet_speed': 'Impetuous',
+            'stability': 'Lucid',
+            'reload_speed': 'Apt'
+        },
+
+        'Tediore': {
+            'melee': 'Perma-Sharp',
+            'accuracy': 'Guaranteed',
+            'damage': 'Hefty',
+            'bullet_speed': 'Brisk',
+            'stability': 'Quality',
+            'reload_speed': 'Refill'
+        }
     },
 
     'title': {

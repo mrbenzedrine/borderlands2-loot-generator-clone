@@ -55,8 +55,14 @@ def generate_assault_rifle(rarity):
 
     if(spawn_with_accessory is True):
         weapon_accessory = choose_assault_rifle_accessory()
+        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
+
+        weapon_full_name = weapon_prefix + ' ' + weapon_title
     else:
         weapon_accessory = 'none'
+        weapon_prefix = ''
+
+        weapon_full_name = weapon_title
 
     weapon_stuff = {
 
@@ -64,8 +70,10 @@ def generate_assault_rifle(rarity):
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
         'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory
-
+        'weapon_accessory': weapon_accessory,
+        'weapon_prefix': weapon_prefix,
+        'weapon_full_name': weapon_full_name
+        
     }
 
     return weapon_stuff    
@@ -113,6 +121,55 @@ weapon_names = {
     
     'prefix': {
 
+        'Bandit': {
+            'damage': 'Nassty',
+            'fire_rate': 'Wyld Asss',
+            'melee': 'Nifed',
+            'bullet_speed': 'Fast Bulets',
+            'stability': 'Taktikal',
+            'magazine_size': 'Expandifide',
+            'accuracy': 'Akurate'
+        },
+
+        'Dahl': {
+            'damage': 'Attack',
+            'fire_rate': 'Feral',
+            'melee': 'Breach',
+            'bullet_speed': 'Deep',
+            'stability': 'Patrol',
+            'magazine_size': 'Onslaught',
+            'accuracy': 'Scout'
+        },
+
+        'Jakobs': {
+            'damage': 'Boss',
+            'fire_rate': 'Wild',
+            'melee': 'Razor',
+            'bullet_speed': 'Cowboy',
+            'stability': 'Horse',
+            'magazine_size': 'Flush',
+            'accuracy': 'Deadshot'
+        },
+
+        'Torgue': {
+            'damage': 'Nasty',
+            'fire_rate': 'Wild',
+            'melee': 'Stabbing',
+            'bullet_speed': 'Slipper',
+            'stability': 'Rhythmic',
+            'magazine_size': 'Plump',
+            'accuracy': 'Rigorous'
+        },
+
+        'Vladof': {
+            'damage': 'Ferocious',
+            'fire_rate': 'Rabid',
+            'melee': 'Skewering',
+            'bullet_speed': 'Swift',
+            'stability': 'Resolute',
+            'magazine_size': 'Expansive',
+            'accuracy': 'Severe'
+        }
     },
 
     'title': {

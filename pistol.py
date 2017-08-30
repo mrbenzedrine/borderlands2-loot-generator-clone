@@ -60,13 +60,26 @@ def generate_pistol(rarity):
     else:
         weapon_accessory = 'none'
 
+    if(spawn_with_accessory is True):
+        weapon_accessory = choose_pistol_accessory()
+        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
+
+        weapon_full_name = weapon_prefix + ' ' + weapon_title
+    else:
+        weapon_accessory = 'none'
+        weapon_prefix = ''
+
+        weapon_full_name = weapon_title
+
     weapon_stuff = {
 
         'weapon_type': 'pistol',
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
         'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory
+        'weapon_accessory': weapon_accessory,
+        'weapon_prefix': weapon_prefix,
+        'weapon_full_name': weapon_full_name
 
     }
 
@@ -118,6 +131,85 @@ weapon_names = {
     
     'prefix': {
 
+        'Bandit': {
+            'melee': 'Baynaneted',
+            'accuracy': 'misles',
+            'double_bullets': 'Dubble',
+            'stability': 'Marxmans',
+            'magazine_size': 'Extendified',
+            'damage': 'murduerer\'s',
+            'fire_rate': 'rapider'
+        },
+
+        'Dahl': {
+            'melee': 'Close Quarters',
+            'accuracy': 'Floated',
+            'double_bullets': 'Twin',
+            'stability': 'Tactical',
+            'magazine_size': 'Loaded',
+            'damage': 'Neutralizing',
+            'fire_rate': 'React'
+        },
+
+        'Hyperion': {
+            'melee': 'Action',
+            'accuracy': 'Earnest',
+            'double_bullets': 'Redundant',
+            'stability': 'Core',
+            'magazine_size': 'Maximized',
+            'damage': 'Win-Win',
+            'fire_rate': 'Dynamic'
+        },
+
+        'Jakobs': {
+            'melee': 'Bowie',
+            'accuracy': 'Straight Shootin\'',
+            'double_bullets': 'Two Fer',
+            'stability': 'Gunstock',
+            'magazine_size': 'Loaded',
+            'damage': 'Dastardly',
+            'fire_rate': 'Trick Shot'
+        },
+
+        'Maliwan': {
+            'melee': 'Evisceration',
+            'accuracy': 'Punctillious',
+            'double_bullets': 'Binary',
+            'stability': 'Elegant',
+            'magazine_size': 'Surfeit',
+            'damage': 'Potent',
+            'fire_rate': 'Expeditious'
+        },
+
+        'Tediore': {
+            'melee': 'Perma-Sharp',
+            'accuracy': 'Dependable',
+            'double_bullets': 'Two for One',
+            'stability': 'Clean',
+            'magazine_size': 'Jam Packed',
+            'damage': 'Super',
+            'fire_rate': 'Peppy'
+        },
+
+        'Torgue': {
+            'melee': 'Thrusting',
+            'accuracy': 'Explicit',
+            'double_bullets': 'Double Penetrating',
+            'stability': 'Stiff',
+            'magazine_size': 'Crammed',
+            'damage': 'Hard',
+            'fire_rate': 'Intense'
+        },
+
+        'Vladof': {
+            'melee': 'Patriot\'s',
+            'accuracy': 'Righteous',
+            'double_bullets': 'Dva',
+            'stability': 'Resolute',
+            'magazine_size': 'Unending',
+            'damage': 'Purgin',
+            'fire_rate': 'Vengeful'
+        }
     },
 
     'title': {

@@ -53,8 +53,14 @@ def generate_sniper_rifle(rarity):
 
     if(spawn_with_accessory is True):
         weapon_accessory = choose_sniper_rifle_accessory()
+        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
+
+        weapon_full_name = weapon_prefix + ' ' + weapon_title
     else:
         weapon_accessory = 'none'
+        weapon_prefix = ''
+
+        weapon_full_name = weapon_title
 
     weapon_stuff = {
 
@@ -62,7 +68,9 @@ def generate_sniper_rifle(rarity):
         'weapon_element': weapon_element,
         'weapon_parts': weapon_parts,
         'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory
+        'weapon_accessory': weapon_accessory,
+        'weapon_prefix': weapon_prefix,
+        'weapon_full_name': weapon_full_name
 
     }
 
@@ -114,6 +122,56 @@ def choose_sniper_rifle_accessory():
 weapon_names = {
     
     'prefix': {
+
+        'Dahl': {
+            'melee': 'Cartel',
+            'accuracy': 'Surgical',
+            'critical_damage': 'Night',
+            'stability': 'Liquid',
+            'magazine_size': 'Operational',
+            'fire_rate': 'Suppressive',
+            'damage': 'Pacifying'
+        },
+
+        'Hyperion': {
+            'melee': 'Contingent',
+            'accuracy': 'Longitudinal',
+            'critical_damage': 'Venture',
+            'stability': 'Cohesion',
+            'magazine_size': 'Resource',
+            'fire_rate': 'Operational',
+            'damage': 'Auditing'
+        },
+
+        'Jakobs': {
+            'melee': 'Ti\'kope',
+            'accuracy': 'Siah-Siah',
+            'critical_damage': 'Tumtum',
+            'stability': 'Chikamin',
+            'magazine_size': 'Hyiu',
+            'fire_rate': 'Klook',
+            'damage': 'Skookum'
+        },
+
+        'Maliwan': {
+            'melee': 'Sublime',
+            'accuracy': 'Dandy',
+            'critical_damage': 'Gentleman\'s',
+            'stability': 'Fashionable',
+            'magazine_size': 'Monstrous',
+            'fire_rate': 'Banbury',
+            'damage': 'Barking'
+        },
+
+        'Vladof': {
+            'melee': 'Britva',
+            'accuracy': 'Zammerchat',
+            'critical_damage': 'Razrez',
+            'stability': 'Dobby',
+            'magazine_size': 'Bolshy',
+            'fire_rate': 'Skorry',
+            'damage': 'Gromky'
+        }
 
     },
 
