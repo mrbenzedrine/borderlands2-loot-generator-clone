@@ -57,11 +57,6 @@ def generate_pistol(rarity):
 
     if(spawn_with_accessory is True):
         weapon_accessory = choose_pistol_accessory()
-    else:
-        weapon_accessory = 'none'
-
-    if(spawn_with_accessory is True):
-        weapon_accessory = choose_pistol_accessory()
         weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
 
         weapon_full_name = weapon_prefix + ' ' + weapon_title
