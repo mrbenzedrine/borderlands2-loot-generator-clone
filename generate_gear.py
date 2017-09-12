@@ -31,7 +31,7 @@ def choose_weapon_type():
     switcher = {
       0: 'pistol',
       1: 'smg',
-      2: 'assualt_rifle',
+      2: 'assault_rifle',
       3: 'sniper_rifle',
       4: 'shotgun',
       5: 'launcher'
