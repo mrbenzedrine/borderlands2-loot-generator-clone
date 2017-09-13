@@ -121,7 +121,7 @@ def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
             test_1 = (element == 'Explosion')
         elif(manufacturer == 'Maliwan'):
             test_2 = (element != 'Explosion' and element != 'None')
-        elif(manufacturer == 'Tediore' or manufacturer == 'Tediore'):
+        elif(manufacturer == 'Tediore' or manufacturer == 'Vladof'):
             test_3 = (element != 'None')
     elif(rarity == 'E-Tech'):
         test_4 = (element != 'None' and element != 'Explosion')
