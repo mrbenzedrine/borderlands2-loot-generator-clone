@@ -5,7 +5,21 @@ def generate_sniper_rifle(rarity):
     # 5 sniper rifle manufacturers
 
     body_manufacturer = choose_sniper_rifle_part_manufacturer()
-    barrel_manufacturer = choose_sniper_rifle_part_manufacturer()
+
+    if(rarity == 'E-Tech'):
+        while True:
+            if body_manufacturer == 'Jakobs':
+                # Can't have a Jakobs E-Tech sniper rifle, roll again
+                print("Jakobs E-Tech sniper rifle, roll again")
+                body_manufacturer = choose_sniper_rifle_part_manufacturer()
+            else:
+                break
+
+    if(rarity == 'E-Tech'):
+        barrel_manufacturer = 'E-Tech'
+    else:
+        barrel_manufacturer = choose_sniper_rifle_part_manufacturer()
+
     grip_manufacturer = choose_sniper_rifle_part_manufacturer()
     scope_manufacturer = choose_sniper_rifle_part_manufacturer()
     stock_manufacturer = choose_sniper_rifle_part_manufacturer()
@@ -30,7 +44,7 @@ def generate_sniper_rifle(rarity):
     # Now need to check validity of the weapon element combo
 
     while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('sniper_rifle', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element)) is True:
+        if (general_weapon_functions.is_general_weapon_element_combo_valid('sniper_rifle', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
             print("Valid weapon element combo")
             print("Sniper rifle is ", weapon_element)
             break
@@ -87,19 +101,25 @@ def choose_sniper_rifle_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
+def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     # Jakobs must be non-elemental, and also Maliwan must be elemental,
     # but not explosive
 
     test_1 = True
     test_2 = True
+    test_3 = True
 
-    if(manufacturer == 'Jakobs'):
-        test_1 = (element == 'None')
-    elif(manufacturer == 'Maliwan'):
-        test_2 = (element != 'None')
+    if(rarity != 'E-Tech'):
+        if(manufacturer == 'Jakobs'):
+            test_1 = (element == 'None')
+        elif(manufacturer == 'Maliwan'):
+            test_2 = (element != 'None')
+    elif(rarity == 'E-Tech'):
+        # No need to check for explosive sniper rifles, the check in
+        # general_weapon_functions.py takes care of that
+        test_3 = (element != 'None')
 
-    valid_combination = test_1 and test_2
+    valid_combination = test_1 and test_2 and test_3
 
     return valid_combination
 

@@ -5,7 +5,22 @@ def generate_launcher(rarity):
     # 5 launcher manufacturers
 
     body_manufacturer = choose_launcher_part_manufacturer()
-    barrel_manufacturer = choose_launcher_part_manufacturer()
+
+    if(rarity == 'E-Tech'):
+        while True:
+            if body_manufacturer == 'Torgue':
+                # Can't have a Torgue E-Tech launcher, roll again
+                # to get another launcher manufacturer
+                print("Torgue E-Tech launcher, roll again")
+                body_manufacturer = choose_launcher_part_manufacturer()
+            else:
+                break
+
+    if(rarity == 'E-Tech'):
+        barrel_manufacturer = 'E-Tech'
+    else:
+        barrel_manufacturer = choose_launcher_part_manufacturer()
+
     grip_manufacturer = choose_launcher_part_manufacturer()
     scope_manufacturer = choose_launcher_part_manufacturer()
     exhaust_manufacturer = choose_launcher_part_manufacturer()
@@ -34,7 +49,7 @@ def generate_launcher(rarity):
     # Now need to check validity of the weapon element combo
 
     while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('launcher', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element)) is True:
+        if (general_weapon_functions.is_general_weapon_element_combo_valid('launcher', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
             print("Valid weapon element combo")
             print("Launcher is ", weapon_element)
             break
@@ -91,7 +106,7 @@ def choose_launcher_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
+def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     # Torgue and Bandit launchers can be explosive only,
     # Maliwan CAN'T be explosive, and both Tediore and Vladof can be
     # any element apart from non-elemental
@@ -99,15 +114,19 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
     test_1 = True
     test_2 = True
     test_3 = True
+    test_4 = True
 
-    if(manufacturer == 'Torgue' or manufacturer == 'Bandit'):
-        test_1 = (element == 'Explosion')
-    elif(manufacturer == 'Maliwan'):
-        test_2 = (element != 'Explosion' and element != 'None')
-    elif(manufacturer == 'Tediore' or manufacturer == 'Tediore'):
-        test_3 = (element != 'None')
+    if(rarity != 'E-Tech'):
+        if(manufacturer == 'Torgue' or manufacturer == 'Bandit'):
+            test_1 = (element == 'Explosion')
+        elif(manufacturer == 'Maliwan'):
+            test_2 = (element != 'Explosion' and element != 'None')
+        elif(manufacturer == 'Tediore' or manufacturer == 'Tediore'):
+            test_3 = (element != 'None')
+    elif(rarity == 'E-Tech'):
+        test_4 = (element != 'None' and element != 'Explosion')
 
-    valid_combination = test_1 and test_2 and test_3
+    valid_combination = test_1 and test_2 and test_3 and test_4
 
     return valid_combination
 

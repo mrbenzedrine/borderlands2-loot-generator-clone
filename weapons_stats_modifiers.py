@@ -66,6 +66,7 @@ rarity_modifiers = {
     'Green': 1.05,
     'Blue': 1.1,
     'Purple': 1.2,
+    'E-Tech': 1.35,
     'Orange': 1.5
 
 }

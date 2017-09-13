@@ -5,7 +5,12 @@ def generate_smg(rarity):
     # There are 5 smg manuafcturers
 
     body_manufacturer = choose_smg_part_manufacturer()
-    barrel_manufacturer = choose_smg_part_manufacturer()
+
+    if(rarity == 'E-Tech'):
+        barrel_manufacturer = 'E-Tech'
+    else:
+        barrel_manufacturer = choose_smg_part_manufacturer()
+
     grip_manufacturer = choose_smg_part_manufacturer()
     scope_manufacturer = choose_smg_part_manufacturer()
     stock_manufacturer = choose_smg_part_manufacturer()
@@ -31,7 +36,7 @@ def generate_smg(rarity):
     # Now need to check validity of the weapon element combo
 
     while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('smg', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element)) is True:
+        if (general_weapon_functions.is_general_weapon_element_combo_valid('smg', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
             print("Valid weapon element combo")
             print("SMG is ", weapon_element)
             break
@@ -99,15 +104,20 @@ def choose_smg_part_manufacturer():
     return switcher.get(random_integer, 'nothing')
 
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
+def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     # Maliwan smg's MUST be elemental
 
-    valid_combination = True
+    test_1 = True
+    test_2 = True
 
-    if(manufacturer == 'Maliwan'):
-        valid_combination = (element != 'None')
+    if(rarity != 'E-Tech'):
+        if(manufacturer == 'Maliwan'):
+            test_1 = (element != 'None')
+    elif(rarity == 'E-Tech'):
+        # Not allowed non-elemental E-Tech smg's
+        test_2 = (element != 'None')
 
-    return valid_combination
+    return test_1 and test_2
 
 def choose_smg_accessory():
     # The attribute values describe the stat of the gun that is increased

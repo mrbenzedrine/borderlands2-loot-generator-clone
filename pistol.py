@@ -8,7 +8,21 @@ def generate_pistol(rarity):
     # The element of the gun
 
     body_manufacturer =  choose_pistol_part_manufacturer()
-    barrel_manufacturer = choose_pistol_part_manufacturer()
+
+    if(rarity == 'E-Tech'):
+        while True:
+            if body_manufacturer == 'Torgue' or body_manufacturer == 'Jakobs':
+                # Can't have a Torgue or Jakobs E-Tech pistol, roll again
+                print("Torgue or Jakobs E-Tech pistol, roll again")
+                body_manufacturer = choose_pistol_part_manufacturer()
+            else:
+                break
+
+    if(rarity == 'E-Tech'):
+        barrel_manufacturer = 'E-Tech'
+    else:
+        barrel_manufacturer = choose_pistol_part_manufacturer()
+
     grip_manufacturer = choose_pistol_part_manufacturer()
     scope_manufacturer = choose_pistol_part_manufacturer()
 
@@ -33,7 +47,7 @@ def generate_pistol(rarity):
     # Now need to check validity of the weapon element combo
 
     while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('pistol', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element)) is True:
+        if (general_weapon_functions.is_general_weapon_element_combo_valid('pistol', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
             print("Valid weapon element combo")
             print("Pistol is ", weapon_element)
             break
@@ -95,16 +109,23 @@ def choose_pistol_part_manufacturer():
     return switcher.get(random_integer, "nothing") 
     # return the string "nothing" as the default option
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
+def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     # Note that only Torgue pistols can be explosive, none of the
     # others can be
 
-    valid_combination = True
+    test_1 = True
+    test_2 = True
+    test_3 = True
 
-    if(element == 'Explosion'):
-        valid_combination = (manufacturer == 'Torgue')
+    if(rarity != 'E-Tech'):
+        if(element == 'Explosion'):
+            test_1 = (manufacturer == 'Torgue')
+    elif(rarity == 'E-Tech'):
+        test_2 = (element != 'Explosion')
+        if(manufacturer != 'Hyperion'):
+            test_3 = (element != 'None')
 
-    return valid_combination
+    return test_1 and test_2 and test_3
 
 def choose_pistol_accessory():
     random_integer = random.randint(0,6)

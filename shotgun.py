@@ -5,7 +5,22 @@ def generate_shotgun(rarity):
     # 5 shotgun manufacturers
 
     body_manufacturer = choose_shotgun_part_manufacturer()
-    barrel_manufacturer = choose_shotgun_part_manufacturer()
+
+    if(rarity == 'E-Tech'):
+        while True:
+            if body_manufacturer == 'Torgue' or body_manufacturer == 'Jakobs':
+                # Can't have a NON-UNIQUE Torgue or Jakobs E-Tech shotgun, 
+                # roll again
+                print("Torgue or Jakobs E-Tech shotgun, roll again")
+                body_manufacturer = choose_shotgun_part_manufacturer()
+            else:
+                break
+
+    if(rarity == 'E-Tech'):
+        barrel_manufacturer = 'E-Tech'
+    else:
+        barrel_manufacturer = choose_shotgun_part_manufacturer()
+
     grip_manufacturer = choose_shotgun_part_manufacturer()
     scope_manufacturer = choose_shotgun_part_manufacturer()
     stock_manufacturer = choose_shotgun_part_manufacturer()
@@ -32,7 +47,7 @@ def generate_shotgun(rarity):
     # Now need to check validity of the weapon element combo
 
     while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('shotgun', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element)) is True:
+        if (general_weapon_functions.is_general_weapon_element_combo_valid('shotgun', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
             print("Valid weapon element combo")
             print("Shotgun is ", weapon_element)
             break
@@ -89,15 +104,20 @@ def choose_shotgun_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
+def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     # Only Torgue shotguns can be explosive
 
-    valid_combination = True
+    test_1 = True
+    test_2 = True
 
-    if(element == 'Explosion'):
-        valid_combination = (manufacturer == 'Torgue')
+    if(rarity != 'E-Tech'):
+        if(element == 'Explosion'):
+            test_1 = (manufacturer == 'Torgue')
+    elif(rarity == 'E-Tech'):
+        # Not allowed non-elemental or explosive E-Tech shotguns
+        test_2 = (element != 'None' and element != 'Explosion')
 
-    return valid_combination    
+    return test_1 and test_2
 
 def choose_shotgun_accessory():
     random_integer = random.randint(0,6)
