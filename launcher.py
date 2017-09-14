@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_launcher(rarity):
+def generate(rarity):
     # 5 launcher manufacturers
 
     body_manufacturer = choose_launcher_part_manufacturer()
@@ -58,38 +58,11 @@ def generate_launcher(rarity):
             print("Launcher is ", weapon_element)
             weapon_element = general_weapon_functions.choose_weapon_element()
 
-    weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
-
-    # Now check to see if the launcher should spawn with an accessory
-
-    if(rarity == 'White'):
-        spawn_with_accessory = False
-    elif(rarity == 'Green' or rarity == 'Blue'):
-        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
-    else:
-        # Purple and above ALWAYS spawn with an accessory
-        spawn_with_accessory = True
-
-    if(spawn_with_accessory is True):
-        weapon_accessory = choose_launcher_accessory()
-        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
-
-        weapon_full_name = weapon_prefix + ' ' + weapon_title
-    else:
-        weapon_accessory = 'none'
-        weapon_prefix = ''
-
-        weapon_full_name = weapon_title
-
     weapon_stuff = {
 
         'weapon_type': 'launcher',
         'weapon_element': weapon_element,
-        'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory,
-        'weapon_prefix': weapon_prefix,
-        'weapon_full_name': weapon_full_name
+        'weapon_parts': weapon_parts
 
     }
 
@@ -130,7 +103,7 @@ def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
 
     return valid_combination
 
-def choose_launcher_accessory():
+def choose_accessory():
     random_integer = random.randint(0,7)
     switcher = {
         0: 'magazine_size',
@@ -143,118 +116,3 @@ def choose_launcher_accessory():
         7: 'damage'
     }
     return switcher.get(random_integer, 'none')
-
-# Dictionary containing the different possibilities for the Prefix and
-# Title of a launcher
-
-weapon_names = {
-    
-    'prefix': {
-
-        'Bandit': {
-            'magazine_size': 'Roket Pawket',
-            'accuracy': 'Snyper',
-            'melee': 'gratuitius',
-            'reload_speed': 'fast actions',
-            'weapon_swap_speed': 'Quick Drawler',
-            'rocket_speed': 'Speeedee',
-            'fire_rate': 'Rappid',
-            'damage': 'Big'
-        },
-
-        'Maliwan': {
-            'magazine_size': 'Plenteous',
-            'accuracy': 'Pertinenet',
-            'melee': 'Proximate',
-            'reload_speed': 'Prudential',
-            'weapon_swap_speed': 'Parataxis',
-            'rocket_speed': 'Punitory',
-            'fire_rate': 'Predacious',
-            'damage': 'Puissant'
-        },
-
-        'Tediore': {
-            'magazine_size': 'Bonus',
-            'accuracy': 'Ultraprecise',
-            'melee': 'Multi-Use',
-            'reload_speed': 'Stocking',
-            'weapon_swap_speed': 'Swapper\'s',
-            'rocket_speed': 'Rocked Speed',
-            'fire_rate': 'Bustling',
-            'damage': 'Large'
-        },
-
-        'Torgue': {
-            'magazine_size': 'Deep a',
-            'accuracy': 'gaa dunk ga',
-            'melee': 'pokee doke',
-            'reload_speed': 'dippity',
-            'weapon_swap_speed': 'twap a',
-            'rocket_speed': 'fidle dee',
-            'fire_rate': 'dum pa',
-            'damage': 'derp'
-        },
-
-        'Vladof': {
-            'magazine_size': 'Worker\'s',
-            'accuracy': 'Victorious',
-            'melee': 'Revolt',
-            'reload_speed': 'Ruthless',
-            'weapon_swap_speed': 'Moscovite\'s',
-            'rocket_speed': 'Paritisan',
-            'fire_rate': 'Turbulent',
-            'damage': 'Rugged'
-        }
-
-    },
-
-    'title': {
-
-        'Bandit': {
-            'Bandit': 'Launcher',
-            'Maliwan': 'area efect',
-            'Tediore': 'Launcher',
-            'Torgue': 'Zooka!',
-            'Vladof': 'bombabarbardeer',
-            'E-Tech': 'PRAZMA CANON'
-        },
-
-        'Maliwan': {
-            'Bandit': 'Projectile',
-            'Maliwan': 'Panorama',
-            'Tediore': 'Projectile',
-            'Torgue': 'Punishment',
-            'Vladof': 'Prowler',
-            'E-Tech': 'PBFG'
-        },
-
-        'Tediore': {
-            'Bandit': 'Launcher',
-            'Maliwan': 'Spread',
-            'Tediore': 'Launcher',
-            'Torgue': 'Bazooka',
-            'Vladof': 'Dispatch',
-            'E-Tech': 'Launcher'
-        },
-
-        'Torgue': {
-            'Bandit': 'boom',
-            'Maliwan': 'Blaaa',
-            'Tediore': 'boom',
-            'Torgue': 'Duuurp!',
-            'Vladof': 'Deee!',
-            'E-Tech': 'Nothing'
-        },
-
-        'Vladof': {
-            'Bandit': 'RPG',
-            'Maliwan': 'Glory',
-            'Tediore': 'RPG',
-            'Torgue': 'Hero',
-            'Vladof': 'Vanquisher',
-            'E-Tech': 'Topneaa'
-        }
-
-    }
-
-}

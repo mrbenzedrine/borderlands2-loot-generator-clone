@@ -1,7 +1,7 @@
 import general_weapon_functions
 import random
 
-def generate_assault_rifle(rarity):
+def generate(rarity):
     # 5 assault rifle manufacturers
 
     body_manufacturer = choose_assault_rifle_part_manufacturer()
@@ -56,39 +56,12 @@ def generate_assault_rifle(rarity):
             print("Assault rifle is ", weapon_element)
             weapon_element = general_weapon_functions.choose_weapon_element()
 
-    weapon_title = weapon_names['title'][weapon_overall_manufacturer][barrel_manufacturer]
-
-    # Now check to see if the assault rifle should spawn with an accessory
-
-    if(rarity == 'White'):
-        spawn_with_accessory = False
-    elif(rarity == 'Green' or rarity == 'Blue'):
-        spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
-    else:
-        # Purple and above ALWAYS spawn with an accessory
-        spawn_with_accessory = True
-
-    if(spawn_with_accessory is True):
-        weapon_accessory = choose_assault_rifle_accessory()
-        weapon_prefix = weapon_names['prefix'][weapon_overall_manufacturer][weapon_accessory]
-
-        weapon_full_name = weapon_prefix + ' ' + weapon_title
-    else:
-        weapon_accessory = 'none'
-        weapon_prefix = ''
-
-        weapon_full_name = weapon_title
-
     weapon_stuff = {
 
         'weapon_type': 'assault_rifle',
         'weapon_element': weapon_element,
-        'weapon_parts': weapon_parts,
-        'weapon_title': weapon_title,
-        'weapon_accessory': weapon_accessory,
-        'weapon_prefix': weapon_prefix,
-        'weapon_full_name': weapon_full_name
-        
+        'weapon_parts': weapon_parts
+
     }
 
     return weapon_stuff    
@@ -120,7 +93,7 @@ def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
 
     return test_1 and test_2    
 
-def choose_assault_rifle_accessory():
+def choose_accessory():
     random_integer = random.randint(0,6)
     switcher = {
         0: 'damage',
@@ -132,122 +105,3 @@ def choose_assault_rifle_accessory():
         6: 'accuracy'
     }
     return switcher.get(random_integer, 'none')
-
-# Dictionary containing the different possibilities for the Prefix and
-# Title of an assualt rifle
-
-weapon_names = {
-    
-    'prefix': {
-
-        'Bandit': {
-            'damage': 'Nassty',
-            'fire_rate': 'Wyld Asss',
-            'melee': 'Nifed',
-            'bullet_speed': 'Fast Bulets',
-            'stability': 'Taktikal',
-            'magazine_size': 'Expandifide',
-            'accuracy': 'Akurate'
-        },
-
-        'Dahl': {
-            'damage': 'Attack',
-            'fire_rate': 'Feral',
-            'melee': 'Breach',
-            'bullet_speed': 'Deep',
-            'stability': 'Patrol',
-            'magazine_size': 'Onslaught',
-            'accuracy': 'Scout'
-        },
-
-        'Jakobs': {
-            'damage': 'Boss',
-            'fire_rate': 'Wild',
-            'melee': 'Razor',
-            'bullet_speed': 'Cowboy',
-            'stability': 'Horse',
-            'magazine_size': 'Flush',
-            'accuracy': 'Deadshot'
-        },
-
-        'Torgue': {
-            'damage': 'Nasty',
-            'fire_rate': 'Wild',
-            'melee': 'Stabbing',
-            'bullet_speed': 'Slipper',
-            'stability': 'Rhythmic',
-            'magazine_size': 'Plump',
-            'accuracy': 'Rigorous'
-        },
-
-        'Vladof': {
-            'damage': 'Ferocious',
-            'fire_rate': 'Rabid',
-            'melee': 'Skewering',
-            'bullet_speed': 'Swift',
-            'stability': 'Resolute',
-            'magazine_size': 'Expansive',
-            'accuracy': 'Severe'
-        }
-    },
-
-    'title': {
-
-        'Bandit': {
-            'Bandit': 'Mashine Gun',
-            'Dahl': 'Carbene',
-            'Jakobs': 'Ass Beeter!',
-            'Torgue': 'Rokets!',
-            # Seems to be 2 Vladof ones, dunno what to do, put both in
-            # for now...
-            'Vladof': 'Mashine Gun / Spinigun',
-            'E-Tech': 'BlASSter'
-        },
-
-        'Dahl': {
-            'Bandit': 'Rifle',
-            'Dahl': 'Carbine',
-            'Jakobs': 'Defender',
-            'Torgue': 'Grenadier',
-            # Seems to be 2 Vladof ones, dunno what to do, put both in
-            # for now...
-            'Vladof': 'Rifle / Minigun',
-            'E-Tech': 'Blaster'
-        },
-
-        'Jakobs': {
-            'Bandit': 'Rifle',
-            'Dahl': 'Scarab',
-            'Jakobs': 'Rifle',
-            'Torgue': 'Cannon',
-            # Seems to be 2 Vladof ones, dunno what to do, put both in
-            # for now...
-            'Vladof': 'Rifle / Gatling Gun',
-            'E-Tech': 'Nothing'
-        },
-
-        'Torgue': {
-            'Bandit': 'Rifle',
-            'Dahl': 'Root',
-            'Jakobs': 'Lance',
-            'Torgue': 'Torpedo',
-            # Seems to be 2 Vladof ones, dunno what to do, put both in
-            # for now...
-            'Vladof': 'Rifle / Spitter',
-            'E-Tech': 'Nothing'
-        },
-
-        'Vladof': {
-            'Bandit': 'Rifle',
-            'Dahl': 'Renegade',
-            'Jakobs': 'Guerrilla',
-            'Torgue': 'Rocketeer',
-            # Seems to be 2 Vladof ones, dunno what to do, put both in
-            # for now...
-            'Vladof': 'Rifle / Spinigun',
-            'E-Tech': 'Blaster'
-        }
-
-    }
-
-}
