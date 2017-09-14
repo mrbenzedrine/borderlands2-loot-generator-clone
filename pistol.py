@@ -59,16 +59,19 @@ def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     test_1 = True
     test_2 = True
     test_3 = True
+    test_4 = True
 
     if(rarity != 'E-Tech'):
         if(element == 'Explosion'):
             test_1 = (manufacturer == 'Torgue')
+        elif(manufacturer == 'Maliwan'):
+            test_4 = (element != 'None')
     elif(rarity == 'E-Tech'):
         test_2 = (element != 'Explosion')
         if(manufacturer != 'Hyperion'):
             test_3 = (element != 'None')
 
-    return test_1 and test_2 and test_3
+    return test_1 and test_2 and test_3 and test_4
 
 def choose_accessory():
     random_integer = random.randint(0,6)
