@@ -25,35 +25,7 @@ def generate(rarity):
 
     }
 
-    weapon_overall_manufacturer = body_manufacturer
-
-    # No Jakobs or Torgue smgs exist, so there are no manufacturer specific
-    # elements that can be set prior to the random generation of an
-    # element
-
-    weapon_element = general_weapon_functions.choose_weapon_element()
-
-    # Now need to check validity of the weapon element combo
-
-    while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('smg', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
-            print("Valid weapon element combo")
-            print("SMG is ", weapon_element)
-            break
-        else:
-            print("Invalid weapon element combo")
-            print("SMG is ", weapon_element)
-            weapon_element = general_weapon_functions.choose_weapon_element()
-
-    weapon_stuff = {
-
-        'weapon_type': 'smg',
-        'weapon_element': weapon_element,
-        'weapon_parts': weapon_parts
-
-    }
-
-    return weapon_stuff
+    return weapon_parts
 
 
 def choose_smg_part_manufacturer():
@@ -96,3 +68,12 @@ def choose_accessory():
         5: 'reload_speed'
     }
     return switcher.get(random_integer, 'none')
+
+def choose_element(weapon_manufacturer):
+    # No Jakobs or Torgue smgs exist, so there are no manufacturer specific
+    # elements that can be set prior to the random generation of an
+    # element
+
+    weapon_element = general_weapon_functions.choose_weapon_element()
+
+    return weapon_element

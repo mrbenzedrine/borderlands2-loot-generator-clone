@@ -34,34 +34,7 @@ def generate(rarity):
 
     }
 
-    weapon_overall_manufacturer = body_manufacturer
-
-    if(weapon_overall_manufacturer == 'Jakobs'):
-        weapon_element = 'None'
-    else:
-        weapon_element = general_weapon_functions.choose_weapon_element()
-
-    # Now need to check validity of the weapon element combo
-
-    while True:
-        if (general_weapon_functions.is_general_weapon_element_combo_valid('sniper_rifle', weapon_element) and is_manufacturer_element_combo_valid(weapon_overall_manufacturer, weapon_element, rarity)) is True:
-            print("Valid weapon element combo")
-            print("Sniper rifle is ", weapon_element)
-            break
-        else:
-            print("Invalid weapon element combo")
-            print("Sniper rifle is ", weapon_element)
-            weapon_element = general_weapon_functions.choose_weapon_element()
-
-    weapon_stuff = {
-
-        'weapon_type': 'sniper_rifle',
-        'weapon_element': weapon_element,
-        'weapon_parts': weapon_parts
-
-    }
-
-    return weapon_stuff
+    return weapon_parts
 
 def choose_sniper_rifle_part_manufacturer():
     random_integer = random.randint(0,4)
@@ -108,3 +81,11 @@ def choose_accessory():
         6: 'damage'
     }
     return switcher.get(random_integer, 'none')
+
+def choose_element(weapon_manufacturer):
+    if(weapon_manufacturer == 'Jakobs'):
+        weapon_element = 'None'
+    else:
+        weapon_element = general_weapon_functions.choose_weapon_element()
+
+    return weapon_element

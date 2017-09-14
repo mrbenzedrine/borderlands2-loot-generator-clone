@@ -23,14 +23,29 @@ def generate_weapon(rarity, level):
 
     weapon_module = generate_weapon_type(weapon_type)
 
-    weapon_stuff = weapon_module.generate(rarity)
+    weapon_parts = weapon_module.generate(rarity)
+
+    weapon_element = weapon_module.choose_element(weapon_parts['body'])
+
+    # Now need to check validity of the weapon element combo
+
+    while True:
+        if (general_weapon_functions.is_general_weapon_element_combo_valid(weapon_type, weapon_element) and weapon_module.is_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element, rarity)) is True:
+            print("Valid weapon element combo")
+            print("%s is %s " % (weapon_type, weapon_element))
+            break
+        else:
+            print("Invalid weapon element combo")
+            print("%s is %s " % (weapon_type, weapon_element))
+            weapon_element = weapon_module.choose_element(weapon_parts['body'])
+
 
     # Maliwan smg's have a special naming case, hence the check below
 
-    if(weapon_type == 'smg' and weapon_stuff['weapon_parts']['barrel'] == 'Maliwan'):
-        weapon_title = weapon_prefixes_titles.names['title']['smg'][weapon_stuff['weapon_parts']['body']][weapon_stuff['weapon_parts']['barrel']][weapon_stuff['weapon_element']]
+    if(weapon_type == 'smg' and weapon_parts['barrel'] == 'Maliwan'):
+        weapon_title = weapon_prefixes_titles.names['title']['smg'][weapon_parts['body']][weapon_parts['barrel']][weapon_element]
     else:
-        weapon_title = weapon_prefixes_titles.names['title'][weapon_stuff['weapon_type']][weapon_stuff['weapon_parts']['body']][weapon_stuff['weapon_parts']['barrel']]
+        weapon_title = weapon_prefixes_titles.names['title'][weapon_type][weapon_parts['body']][weapon_parts['barrel']]
 
     if(rarity == 'White'):
         spawn_with_accessory = False
@@ -42,7 +57,7 @@ def generate_weapon(rarity, level):
 
     if(spawn_with_accessory is True):
         weapon_accessory = weapon_module.choose_accessory()
-        weapon_prefix = weapon_prefixes_titles.names['prefix'][weapon_stuff['weapon_type']][weapon_stuff['weapon_parts']['body']][weapon_accessory]
+        weapon_prefix = weapon_prefixes_titles.names['prefix'][weapon_type][weapon_parts['body']][weapon_accessory]
 
         weapon_full_name = weapon_prefix + ' ' + weapon_title
     else:
@@ -59,10 +74,10 @@ def generate_weapon(rarity, level):
         'weapon_accessory': weapon_accessory
     }
 
-    print(weapon_stuff)
+    print(weapon_parts)
     print(weapon_naming_info)
 
-    return Gun(weapon_stuff['weapon_type'], weapon_stuff['weapon_parts'], rarity, weapon_stuff['weapon_element'], level, weapon_naming_info['weapon_title'], weapon_naming_info['weapon_prefix'])
+    return Gun(weapon_type, weapon_parts, rarity, weapon_element, level, weapon_naming_info['weapon_title'], weapon_naming_info['weapon_prefix'])
 
 
 def choose_weapon_type():
