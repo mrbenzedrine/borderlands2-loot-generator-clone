@@ -1,3 +1,5 @@
+import general_shield_functions
+
 class Shield:
 
     def __init__(self, manufacturer, parts, level, rarity):
@@ -120,8 +122,19 @@ class NovaShield(Shield):
         self.type = 'nova'
 
     def get_extra_stats(self):
+
+        if(self.manufacturer == 'Torgue'):
+            nova_element = 'Explosion'
+        else:
+            nova_element = general_shield_functions.choose_element()
+
+        # Check the validity of the nova element and manufacturer
+        # combination, and let us get back a valid element if invalid
+
+        valid_nova_element = general_shield_functions.get_valid_nova_spike_manufacturer_element_combo(self.manufacturer, nova_element, 'nova')
+
         return {
-            'element': 'none', # not listed in the item card's
+            'element': valid_nova_element, # not listed in the item card's
             # stats, but instead in the item card description
 
             # Also need to generate an element, and will need to be
@@ -148,8 +161,19 @@ class SpikeShield(Shield):
         self.type = 'spike'
 
     def get_extra_stats(self):
+
+        if(self.manufacturer == 'Torgue'):
+            spike_element = 'Explosion'
+        else:
+            spike_element = general_shield_functions.choose_element()
+
+        # Check the validity of the spike element and manufacturer
+        # combination, and let us get back a valid element if invalid
+
+        valid_spike_element = general_shield_functions.get_valid_nova_spike_manufacturer_element_combo(self.manufacturer, spike_element, 'spike')
+
         return {
-            'element': 'none', # not listed in the item card's
+            'element': valid_spike_element, # not listed in the item card's
             # stats, but instead in the item card description
 
             # Same deal as the element geenration in NovaShield class
