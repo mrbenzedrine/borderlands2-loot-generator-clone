@@ -1,7 +1,7 @@
 from gun import Gun
-from generate_gear import generate_weapon
+import weapon_generation
 
-test_gun = generate_weapon('E-Tech', 5)
+test_gun = weapon_generation.generate('E-Tech', 5)
 print(test_gun.type)
 print(test_gun.stats)
 print(test_gun.parts)

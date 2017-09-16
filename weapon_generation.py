@@ -10,7 +10,7 @@ import shotgun
 import sniper_rifle
 import launcher
 
-def generate_weapon(rarity, level):
+def generate(rarity, level):
 
     # rarity: string telling us what the rarity of the generated 
     # gun should be
