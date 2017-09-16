@@ -16,13 +16,13 @@ def generate(rarity, level):
     shield_manufacturer = get_shield_manufacturer(shield_type)
     body_manufacturer = generate_manufacturer()
     battery_manufacturer = generate_manufacturer()
-    capcitor_manufacturer = generate_manufacturer()
+    capacitor_manufacturer = generate_manufacturer()
 
     shield_parts = {
 
         'body': body_manufacturer,
         'battery': battery_manufacturer,
-        'capacitor': capcitor_manufacturer
+        'capacitor': capacitor_manufacturer
 
     }
 
