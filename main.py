@@ -1,9 +1,8 @@
 import weapon_generation
 import shield_generation
+import loot_generation
+import enemies
 
-test_shield = shield_generation.generate('Purple', 5)
-print(test_shield.manufacturer)
-print(test_shield.parts)
-print(test_shield.level)
-print(test_shield.rarity)
-print(test_shield.type)
+test_enemy = enemies.Chump(1)
+test_loot = loot_generation.enemy_loot_generation(test_enemy)
+print(test_loot)
