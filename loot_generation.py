@@ -6,14 +6,15 @@ def enemy_loot_generation(enemy):
     
     # enemy: instance of an enemy class
 
-    enemy_loot_pool = enemy.loot_pool
+    enemy_loot_dropped = enemy.calculate_potential_loot_dropped()
+    print(enemy_loot_dropped)
 
     # Create array that will hold all the loot dropped by the enemy
 
     all_loot = []
 
-    for index in range(0, len(enemy_loot_pool)):
-        loot_pool_part = enemy_loot_pool[index]
+    for index in range(0, len(enemy_loot_dropped)):
+        loot_pool_part = enemy_loot_dropped[index]
         for quantity in range(0, loot_pool_part['quantity']):
             loot = choose_loot_type().generate(loot_pool_part['rarity'], enemy.level)
             all_loot.append(loot)
