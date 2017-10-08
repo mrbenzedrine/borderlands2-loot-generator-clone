@@ -1,12 +1,43 @@
 import random
 
-class Chump:
+# Enemy class will only ever be used as a base for the other enemy classes
+# to inherit from, attempting to use it by itself will cause errors as
+# there are references to methods and attributes that will only exist
+# when they're defined in the class inheriting from Enemy
+
+class Enemy:
+
+    def __init__(self, level):
+
+        self.level = level
+
+    def calculate_potential_loot_dropped(self):
+
+        # Contains methods and attributes that will be defined in
+        # the class that inherits from this Enemy class
+
+        # Need to generate one piece of the potential loot
+
+        generated_potential_loot = {
+            'rarity': self.calculate_potential_loot_rarity(),
+            'quantity': self.potential_loot_quantity
+        }
+
+        # Form a new tuple containing both the guaranteed loot pool and one 
+        # piece of loot from the potential loot pool
+
+        all_dropped_loot = self.guaranteed_loot_pool + (generated_potential_loot,)
+
+        return all_dropped_loot
+
+class Chump(Enemy):
 
     def __init__(self, level):
 
         # level: integer denoting what level the enemy is
 
-        self.level = level
+        super().__init__(level)
+
         self.guaranteed_loot_pool = (
             {
                 'rarity': 'White',
@@ -18,7 +49,7 @@ class Chump:
             }
         )
 
-        # Will only drop ONE of these potential pieces of loot
+        self.potential_loot_quantity = 1
 
         # Not sure yet how to use this data to generate the same 
         # functionality as the calculate_potential_loot_rarity() method
@@ -41,22 +72,6 @@ class Chump:
         #         'probability': 1 - (1/10 + 1/100 + 1/500)
         #     }   
         # )
-
-    def calculate_potential_loot_dropped(self):
-
-        # Need to generate one piece of the potential loot
-
-        generated_potential_loot = {
-            'rarity': self.calculate_potential_loot_rarity(),
-            'quantity': 1
-        }
-
-        # Form a new tuple containing both the guaranteed loot pool and one 
-        # piece of loot from the potential loot pool
-
-        all_dropped_loot = self.guaranteed_loot_pool + (generated_potential_loot,)
-
-        return all_dropped_loot
 
     def calculate_potential_loot_rarity(self):
 
