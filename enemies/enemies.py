@@ -141,12 +141,13 @@ class Badass(Enemy):
         }
         return switcher.get(random_integer, 'nothing')
 
-class SuperBadass():
+class SuperBadass(Enemy):
 
     def __init__(self, level):
 
-        self.level = level
-        self.loot_pool = (
+        super().__init__(level)
+
+        self.guaranteed_loot_pool = (
             {
                 'rarity': 'White',
                 'quantity': 2
@@ -160,6 +161,32 @@ class SuperBadass():
                 'quantity': 1
             }
         )
+
+        self.potential_loot_quantity = 1
+
+    def calculate_potential_loot_rarity(self):
+
+        random_value = random.random()
+
+        if(random_value <= 1/7):
+            potential_rarity = 'Blue'
+        elif(random_value > 1/7 and random_value <= 1/7 + 1/70):
+            potential_rarity = 'Purple'
+        elif(random_value > 1/7 + 1/70 and random_value <= 1/7 + 1/70 + 1/400):
+            potential_rarity = 'Orange'
+        else:
+            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+
+        return potential_rarity
+
+    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
+        random_integer = random.randint(0,2)
+        switcher = {
+            0: 'White',
+            1: 'Green',
+            2: 'Blue'
+        }
+        return switcher.get(random_integer, 'nothing')
 
 class UltimateBadass():
 
