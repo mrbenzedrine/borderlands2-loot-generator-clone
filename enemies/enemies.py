@@ -10,13 +10,30 @@ class Enemy:
     def __init__(self, level):
 
         self.level = level
+        self.dropped_loot = {
+            'White': 0,
+            'Green': 0,
+            'Blue': 0,
+            'Purple': 0,
+            'Orange': 0
+        }
+
+    def drop_loot(self):
+
+        all_dropped_loot = self.guaranteed_loot_pool + self.calculate_potential_loot_dropped()
+
+        # Now need to iterate through all_dropped_loot and increment the
+        # corresponding rarity quantity
+
+        for x in range(0, len(all_dropped_loot)):
+            self.dropped_loot[all_dropped_loot[x]['rarity']] = self.dropped_loot[all_dropped_loot[x]['rarity']] + all_dropped_loot[x]['quantity']
+
+        return self.dropped_loot
 
     def calculate_potential_loot_dropped(self):
 
         # Contains methods and attributes that will be defined in
         # the class that inherits from this Enemy class
-
-        # Need to generate one piece of the potential loot
 
         potential_loot_array = []
 
@@ -29,12 +46,7 @@ class Enemy:
 
         potential_loot_tuple = tuple(potential_loot_array)
 
-        # Form a new tuple containing both the guaranteed loot pool and one 
-        # piece of loot from the potential loot pool
-
-        all_dropped_loot = self.guaranteed_loot_pool + potential_loot_tuple
-
-        return all_dropped_loot
+        return potential_loot_tuple
 
 class Chump(Enemy):
 
