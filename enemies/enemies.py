@@ -48,6 +48,17 @@ class Enemy:
 
         return potential_loot_tuple
 
+    def choose_white_or_green_rarity(self):
+
+        random_value = random.random()
+
+        if(random_value < 0.55):
+            rarity = 'White'
+        else:
+            rarity = 'Green'
+
+        return rarity
+
 class Chump(Enemy):
 
     def __init__(self, level):
@@ -105,17 +116,9 @@ class Chump(Enemy):
         elif(random_value > 1/10 + 1/100 and random_value <= 1/10 + 1/100 + 1/500):
             potential_rarity = 'Orange'
         else:
-            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+            potential_rarity = self.choose_white_or_green_rarity()
 
         return potential_rarity
-
-    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
-        random_integer = random.randint(0,1)
-        switcher = {
-            0: 'White',
-            1: 'Green'
-        }
-        return switcher.get(random_integer, 'nothing')
 
 class Badass(Enemy):
 
@@ -147,17 +150,9 @@ class Badass(Enemy):
         elif(random_value > 1/8 + 1/80 and random_value <= 1/8 + 1/80 + 1/450):
             potential_rarity = 'Orange'
         else:
-            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+            potential_rarity = self.choose_white_or_green_rarity()
 
         return potential_rarity
-
-    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
-        random_integer = random.randint(0,1)
-        switcher = {
-            0: 'White',
-            1: 'Green'
-        }
-        return switcher.get(random_integer, 'nothing')
 
 class SuperBadass(Enemy):
 
@@ -193,18 +188,9 @@ class SuperBadass(Enemy):
         elif(random_value > 1/7 + 1/70 and random_value <= 1/7 + 1/70 + 1/400):
             potential_rarity = 'Orange'
         else:
-            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+            potential_rarity = self.choose_white_or_green_rarity()
 
         return potential_rarity
-
-    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
-        random_integer = random.randint(0,2)
-        switcher = {
-            0: 'White',
-            1: 'Green',
-            2: 'Blue'
-        }
-        return switcher.get(random_integer, 'nothing')
 
 class UltimateBadass(Enemy):
 
@@ -244,19 +230,9 @@ class UltimateBadass(Enemy):
         elif(random_value > 1/6 + 1/65 and random_value <= 1/6 + 1/65 + 1/350):
             potential_rarity = 'Orange'
         else:
-            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+            potential_rarity = self.choose_white_or_green_rarity()
 
         return potential_rarity
-
-    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
-        random_integer = random.randint(0,3)
-        switcher = {
-            0: 'White',
-            1: 'Green',
-            2: 'Blue',
-            3: 'Purple'
-        }
-        return switcher.get(random_integer, 'nothing')
 
 class Chubby(Enemy):
 
@@ -296,20 +272,9 @@ class Chubby(Enemy):
         elif(random_value > 1/5 + 1/60 and random_value <= 1/5 + 1/60 + 1/325):
             potential_rarity = 'Orange'
         else:
-            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+            potential_rarity = self.choose_white_or_green_rarity()
 
         return potential_rarity
-
-    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
-        random_integer = random.randint(0,4)
-        switcher = {
-            0: 'White',
-            1: 'Green',
-            2: 'Blue',
-            3: 'Purple',
-            4: 'Orange'
-        }
-        return switcher.get(random_integer, 'nothing')
 
 class RaidBoss(Enemy):
 
@@ -353,17 +318,6 @@ class RaidBoss(Enemy):
         elif(random_value > 1/5 + 1/55 and random_value <= 1/5 + 1/55 + 1/300):
             potential_rarity = 'Orange'
         else:
-            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+            potential_rarity = self.choose_white_or_green_rarity()
 
         return potential_rarity
-
-    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
-        random_integer = random.randint(0,4)
-        switcher = {
-            0: 'White',
-            1: 'Green',
-            2: 'Blue',
-            3: 'Purple',
-            4: 'Orange'
-        }
-        return switcher.get(random_integer, 'nothing')
