@@ -18,15 +18,21 @@ class Enemy:
 
         # Need to generate one piece of the potential loot
 
-        generated_potential_loot = {
-            'rarity': self.calculate_potential_loot_rarity(),
-            'quantity': self.potential_loot_quantity
-        }
+        potential_loot_array = []
+
+        for x in range(0, self.potential_loot_quantity):
+            generated_potential_loot = {
+                'rarity': self.calculate_potential_loot_rarity(),
+                'quantity': 1
+            }
+            potential_loot_array.append(generated_potential_loot)
+
+        potential_loot_tuple = tuple(potential_loot_array)
 
         # Form a new tuple containing both the guaranteed loot pool and one 
         # piece of loot from the potential loot pool
 
-        all_dropped_loot = self.guaranteed_loot_pool + (generated_potential_loot,)
+        all_dropped_loot = self.guaranteed_loot_pool + potential_loot_tuple
 
         return all_dropped_loot
 
