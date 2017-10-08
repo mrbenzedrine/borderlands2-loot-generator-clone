@@ -1,14 +1,14 @@
 import random
-from gun import Gun
-import general_weapon_functions
-import weapon_prefixes_titles
+from gear.weapons.gun import Gun
+import gear.weapons.general_weapon_functions as general_weapon_functions
+import gear.weapons.weapon_prefixes_titles as weapon_prefixes_titles
 
-import pistol
-import smg
-import assault_rifle
-import shotgun
-import sniper_rifle
-import launcher
+import gear.weapons.pistol as pistol
+import gear.weapons.smg as smg
+import gear.weapons.assault_rifle as assault_rifle
+import gear.weapons.shotgun as shotgun
+import gear.weapons.sniper_rifle as sniper_rifle
+import gear.weapons.launcher as launcher
 
 def generate(rarity, level):
 

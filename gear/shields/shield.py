@@ -1,4 +1,4 @@
-import general_shield_functions
+from . import general_shield_functions
 
 class Shield:
 

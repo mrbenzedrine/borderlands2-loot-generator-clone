@@ -1,5 +1,5 @@
-from weapons_lvl1_base_stats import weapons_lvl1_base_stats
-import weapons_stats_modifiers
+from . import weapons_lvl1_base_stats
+from . import weapons_stats_modifiers
 
 class Gun:
 

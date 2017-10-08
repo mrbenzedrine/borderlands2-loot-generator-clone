@@ -1,4 +1,4 @@
-import general_weapon_functions
+from . import general_weapon_functions
 import random
 
 def generate(rarity):

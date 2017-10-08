@@ -1,5 +1,5 @@
 import random
-import shield
+import gear.shields.shield as shield
 
 def generate(rarity, level):
 
