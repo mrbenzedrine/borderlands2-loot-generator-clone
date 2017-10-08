@@ -293,12 +293,13 @@ class Chubby(Enemy):
         }
         return switcher.get(random_integer, 'nothing')
 
-class RaidBoss():
+class RaidBoss(Enemy):
 
     def __init__(self, level):
 
-        self.level = level
-        self.loot_pool = (
+        super().__init__(level)
+
+        self.guaranteed_loot_pool = (
             {
                 'rarity': 'White',
                 'quantity': 3
@@ -320,3 +321,31 @@ class RaidBoss():
                 'quantity': 1
             }        
         )
+
+        self.potential_loot_quantity = 4
+
+    def calculate_potential_loot_rarity(self):
+
+        random_value = random.random()
+
+        if(random_value <= 1/5):
+            potential_rarity = 'Blue'
+        elif(random_value > 1/5 and random_value <= 1/5 + 1/55):
+            potential_rarity = 'Purple'
+        elif(random_value > 1/5 + 1/55 and random_value <= 1/5 + 1/55 + 1/300):
+            potential_rarity = 'Orange'
+        else:
+            potential_rarity = self.choose_potential_rarity_from_guaranteed_loot_rarity()
+
+        return potential_rarity
+
+    def choose_potential_rarity_from_guaranteed_loot_rarity(self):
+        random_integer = random.randint(0,4)
+        switcher = {
+            0: 'White',
+            1: 'Green',
+            2: 'Blue',
+            3: 'Purple',
+            4: 'Orange'
+        }
+        return switcher.get(random_integer, 'nothing')
