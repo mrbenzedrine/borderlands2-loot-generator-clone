@@ -90,7 +90,7 @@ class Transfusion(GrenadeMod):
 
     def get_type_specific_stats(self):
         return {
-            'no_of_child_grenades': self.calculate_no_of_child_grenades()
+            'no_of_child_grenades': self.calculate_no_of_child_grenades(),
             'healing_percentage': self.calculate_healing_percentage()
         }
 
