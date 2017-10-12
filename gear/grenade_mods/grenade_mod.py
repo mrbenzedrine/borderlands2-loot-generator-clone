@@ -45,3 +45,95 @@ class GrenadeMod:
     def get_type_specific_stats(self):
         # No extra stats for standard grenade
         return 'none'
+
+class AreaOfEffect(GrenadeMod):
+
+    def __init__(self, level, rarity, manufacturer, element, delivery_mechanism):
+
+        super().__init__(level, rarity, manufacturer, element, delivery_mechanism)
+        self.type = 'area_of_effect'
+
+    def get_type_specific_stats(self):
+        return {
+            'damage_per_sec': self.calculate_damage_per_sec()
+        }
+
+    def calculate_damage_per_sec(self):
+        # AoE grenades cannot be explosive, so this stat will always be 
+        # relevant/non-zero unlike bouncing betties which CAN be explosive
+        return 0
+
+class BouncingBetty(GrenadeMod):
+
+    def __init__(self, level, rarity, manufacturer, element, delivery_mechanism):
+
+        super().__init__(level, rarity, manufacturer, element, delivery_mechanism)
+        self.type = 'bouncing_betty'
+
+    def get_type_specific_stats(self):
+        return {
+            'damage_per_sec': self.calculate_damage_per_sec()
+        }
+
+    def calculate_damage_per_sec(self):
+        # Bouncing betties can be explosive, in which case this stat
+        # is irrelevant, so it'll just be zero if the element of the
+        # grenade is explosive
+        return 0
+
+class Transfusion(GrenadeMod):
+
+    def __init__(self, level, rarity, manufacturer, element, delivery_mechanism):
+
+        super().__init__(level, rarity, manufacturer, element, delivery_mechanism)
+        self.type = 'transfusion'
+
+    def get_type_specific_stats(self):
+        return {
+            'no_of_child_grenades': self.calculate_no_of_child_grenades()
+            'healing_percentage': self.calculate_healing_percentage()
+        }
+
+    def calculate_no_of_child_grenades(self):
+        # Will likely have a probability roll that is depends to some
+        # degree on the rarity that'll determine the no. of child grenades,
+        # but have placeholder value for now
+        return 0
+
+    def calculate_healing_percentage(self):
+        # Determines what percentage of the damage inflicted is converted
+        # into the healing health orbs
+        return 0
+
+class MIRV(GrenadeMod):
+
+    def __init__(self, level, rarity, manufacturer, element, delivery_mechanism):
+
+        super().__init__(level, rarity, manufacturer, element, delivery_mechanism)
+        self.type = 'mirv'
+
+    def get_type_specific_stats(self):
+        return {
+            'no_of_child_grenades': self.calculate_no_of_child_grenades()
+        }
+
+    def calculate_no_of_child_grenades(self):
+        return 0
+
+class Singularity(GrenadeMod):
+
+    def __init__(self, level, rarity, manufacturer, element, delivery_mechanism):
+
+        super().__init__(level, rarity, manufacturer, element, delivery_mechanism)
+        self.type = 'singularity'
+
+    def get_type_specific_stats(self):
+        return {
+            'damage_per_sec': self.calculate_damage_per_sec()
+        }
+
+    def calculate_damage_per_sec(self):
+        # Singularity grenades can be explosive too, and in that case 
+        # this stat is irrelevant, so it'll just be zero if the element 
+        # of the grenade is explosive
+        return 0
