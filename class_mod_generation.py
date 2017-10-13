@@ -16,8 +16,8 @@ def generate(rarity, level):
 
     class_mod_type = class_mod_module.choose_class_mod_type()
     class_mod_info = {
-        'stat_changes': class_mod_module.get_stat_changes(class_mod_type, rarity, level),
-        'skill_point_changes': class_mod_module.get_skill_point_changes(class_mod_type, rarity, level)
+        'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
+        'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type)(rarity, level)
     }
 
     return ClassMod(level, rarity, class_mod_character, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
