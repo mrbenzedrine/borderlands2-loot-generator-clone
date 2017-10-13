@@ -1,12 +1,12 @@
 import random
 
 from gear.class_mods.class_mod import ClassMod
-import gear.class_mods.assassin as assassin
-import gear.class_mods.commando as commando
-import gear.class_mods.gunzerker as gunzerker
-import gear.class_mods.mechromancer as mechromancer
-import gear.class_mods.psycho as psycho
-import gear.class_mods.siren as siren
+import gear.class_mods.assassin_class_mod_generation as assassin
+import gear.class_mods.commando_class_mod_generation as commando
+import gear.class_mods.gunzerker_class_mod_generation as gunzerker
+import gear.class_mods.mechromancer_class_mod_generation as mechromancer
+import gear.class_mods.psycho_class_mod_generation as psycho
+import gear.class_mods.siren_class_mod_generation as siren
 
 def generate(rarity, level):
     
