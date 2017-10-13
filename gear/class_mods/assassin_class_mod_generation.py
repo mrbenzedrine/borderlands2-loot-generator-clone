@@ -1,5 +1,16 @@
 import random
 
+from assassin_class_mods import infiltrator
+from assassin_class_mods import killer
+from assassin_class_mods import ninja
+from assassin_class_mods import professional
+from assassin_class_mods import rogue
+from assassin_class_mods import shot
+from assassin_class_mods import sniper
+from assassin_class_mods import spy
+from assassin_class_mods import stalker
+from assassin_class_mods import survivor
+
 def choose_class_mod_type():
     random_integer = random.randint(0,9)
     switcher = {
@@ -18,91 +29,30 @@ def choose_class_mod_type():
 
 def get_stat_changes_function(class_mod_type):
     switcher = {
-        'infiltrator': calculate_infiltrator_com_stat_changes,
-        'killer': calculate_killer_com_stat_changes,
-        'ninja': calculate_ninja_com_stat_changes,
-        'professional': calculate_professional_com_stat_changes,
-        'rogue': calculate_rogue_com_stat_changes,
-        'shot': calculate_shot_com_stat_changes,
-        'sniper': calculate_sniper_com_stat_changes,
-        'spy': calculate_spy_com_stat_changes,
-        'stalker': calculate_stalker_com_stat_changes,
-        'survivor'calculate_survivor_com_stat_changes:
+        'infiltrator': infiltrator.calculate_stat_changes,
+        'killer': killer.calculate_stat_changes,
+        'ninja': ninja.calculate_stat_changes,
+        'professional': professional.calculate_stat_changes,
+        'rogue': rogue.calculate_stat_changes,
+        'shot': shot.calculate_stat_changes,
+        'sniper': sniper.calculate_stat_changes,
+        'spy': spy.calculate_stat_changes,
+        'stalker': stalker.calculate_stat_changes,
+        'survivor': survivor.calculate_stat_changes
     }
     return switcher.get(class_mod_type, 'nothing')
-
-def calculate_infiltrator_com_stat_changes(rarity, level):
-    pass
-
-def calculate_killer_com_stat_changes(rarity, level):
-    pass
-
-def calculate_ninja_com_stat_changes(rarity, level):
-    pass
-
-def calculate_professional_com_stat_changes(rarity, level):
-    pass
-
-def calculate_rogue_com_stat_changes(rarity, level):
-    pass
-
-def calculate_shot_com_stat_changes(rarity, level):
-    pass
-
-def calculate_sniper_com_stat_changes(rarity, level):
-    pass
-
-def calculate_spy_com_stat_changes(rarity, level):
-    pass
-
-def calculate_stalker_com_stat_changes(rarity, level):
-    pass
-
-def calculate_survivor_com_stat_changes(rarity, level):
-    pass
-
 
 def get_skill_point_changes_function(class_mod_type):
     switcher = {
-        'infiltrator': calculate_infiltrator_com_skill_point_changes,
-        'killer': calculate_killer_com_skill_point_changes,
-        'ninja': calculate_ninja_com_skill_point_changes,
-        'professional': calculate_professional_com_skill_point_changes,
-        'rogue': calculate_rogue_com_skill_point_changes,
-        'shot': calculate_shot_com_skill_point_changes,
-        'sniper': calculate_sniper_com_skill_point_changes,
-        'spy': calculate_spy_com_skill_point_changes,
-        'stalker': calculate_stalker_com_skill_point_changes,
-        'survivor':calculate_survivor_com_skill_point_changes
+        'infiltrator': infiltrator.calculate_skill_point_changes,
+        'killer': killer.calculate_skill_point_changes,
+        'ninja': ninja.calculate_skill_point_changes,
+        'professional': professional.calculate_skill_point_changes,
+        'rogue': rogue.calculate_skill_point_changes,
+        'shot': shot.calculate_skill_point_changes,
+        'sniper': sniper.calculate_skill_point_changes,
+        'spy': spy.calculate_skill_point_changes,
+        'stalker': stalker.calculate_skill_point_changes,
+        'survivor': survivor.calculate_skill_point_changes
     }
     return switcher.get(class_mod_type, 'nothing')
-
-def calculate_infiltrator_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_killer_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_ninja_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_professional_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_rogue_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_shot_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_sniper_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_spy_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_stalker_com_skill_point_changes(rarity, level):
-    pass
-
-def calculate_survivor_com_skill_point_changes(rarity, level):
-    pass
