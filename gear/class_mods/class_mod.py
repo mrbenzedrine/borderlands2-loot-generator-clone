@@ -1,6 +1,6 @@
 class ClassMod:
 
-    def __init__(self, level, rarity, character, stat_changes, skill_point_changes):
+    def __init__(self, level, rarity, character, type, prefix, stat_changes, skill_point_changes):
 
         # level: integer telling what the level requirement of the class 
         # mod is
@@ -23,5 +23,7 @@ class ClassMod:
         self.level = level
         self.rarity = rarity
         self.character = character
+        self.type = type
+        self.prefix = prefix
         self.stat_changes = stat_changes
         self.skill_point_changes = skill_point_changes

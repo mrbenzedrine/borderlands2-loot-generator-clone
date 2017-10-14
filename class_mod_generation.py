@@ -32,7 +32,7 @@ def generate(rarity, level):
             'skill_point_changes': 'none'
         }
 
-    return ClassMod(level, rarity, class_mod_character, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
+    return ClassMod(level, rarity, class_mod_character, class_mod_type, class_mod_prefix, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
 
 def choose_character():
     random_integer = random.randint(0,5)
