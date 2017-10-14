@@ -1,15 +1,15 @@
 import random
 
-from assassin_class_mods import infiltrator
-from assassin_class_mods import killer
-from assassin_class_mods import ninja
-from assassin_class_mods import professional
-from assassin_class_mods import rogue
-from assassin_class_mods import shot
-from assassin_class_mods import sniper
-from assassin_class_mods import spy
-from assassin_class_mods import stalker
-from assassin_class_mods import survivor
+from .assassin_class_mods import infiltrator
+from .assassin_class_mods import killer
+from .assassin_class_mods import ninja
+from .assassin_class_mods import professional
+from .assassin_class_mods import rogue
+from .assassin_class_mods import shot
+from .assassin_class_mods import sniper
+from .assassin_class_mods import spy
+from .assassin_class_mods import stalker
+from .assassin_class_mods import survivor
 
 def choose_class_mod_type():
     random_integer = random.randint(0,9)
