@@ -27,6 +27,21 @@ def choose_class_mod_type():
     }
     return switcher.get(random_integer, 'nothing')
 
+def get_class_mod_prefix_function(class_mod_type):
+    switcher = {
+        'infiltrator': infiltrator.choose_prefix,
+        'killer': killer.choose_prefix,
+        'ninja': ninja.choose_prefix,
+        'professional': professional.choose_prefix,
+        'rogue': rogue.choose_prefix,
+        'shot': shot.choose_prefix,
+        'sniper': sniper.choose_prefix,
+        'spy': spy.choose_prefix,
+        'stalker': stalker.choose_prefix,
+        'survivor': survivor.choose_prefix
+    }
+    return switcher.get(class_mod_type, 'nothing')
+
 def get_stat_changes_function(class_mod_type):
     switcher = {
         'infiltrator': infiltrator.calculate_stat_changes,

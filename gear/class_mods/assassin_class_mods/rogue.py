@@ -1,3 +1,6 @@
+def choose_prefix():
+    pass
+
 def calculate_stat_changes(rarity, level):
     pass
 

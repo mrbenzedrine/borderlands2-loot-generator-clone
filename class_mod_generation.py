@@ -19,12 +19,15 @@ def generate(rarity, level):
     # White rarity class mods only change stats, they don't affect skill
     # points
     if(rarity != 'White'):
+        class_mod_prefix = class_mod_module.get_class_mod_prefix_function(class_mod_type)()
         class_mod_info = {
+            'prefix': class_mod_prefix,
             'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
             'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type)(rarity, level)
         }
     else:
         class_mod_info = {
+            'prefix': 'none',
             'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
             'skill_point_changes': 'none'
         }
