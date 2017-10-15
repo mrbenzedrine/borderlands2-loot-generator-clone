@@ -65,7 +65,13 @@ def calculate_skill_point_changes(rarity, level):
 
     fixed_skills_to_boost = ['Like the Wind', 'Tw0 Fang', 'Vel0city']
 
-    if(rarity == 'Blue'):
+    if(rarity == 'Green'):
+        # Pick 1 skill from fixed_skills_to_boost
+
+        random_integer = random.randint(0,2)
+        skills_to_boost = [fixed_skills_to_boost[random_integer]]
+
+    elif(rarity == 'Blue'):
         # Need to pick 2 skills from fixed_skills_to_boost, so what
         # we'll do is generate a random integer between 0 and 2, remove
         # the skill with that index in fixed_skills_to_boost, and then
