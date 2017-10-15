@@ -65,7 +65,11 @@ def calculate_skill_point_changes(rarity, level):
 
     fixed_skills_to_boost = ['Like the Wind', 'Tw0 Fang', 'Vel0city']
 
-    if(rarity == 'Green'):
+    if(rarity == 'White'):
+        # White rarity class mods offer no skill boosts, so lets just
+        # return an empty list
+        skills_to_boost = []
+    elif(rarity == 'Green'):
         # Pick 1 skill from fixed_skills_to_boost
 
         random_integer = random.randint(0,2)
