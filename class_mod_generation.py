@@ -14,25 +14,42 @@ def generate(rarity, level):
 
     class_mod_module = get_class_mod_module(class_mod_character)
 
-    class_mod_type = class_mod_module.choose_class_mod_type()
+    class_mod_type_info = class_mod_module.choose_class_mod_type()
 
-    # White rarity class mods only change stats, they don't affect skill
-    # points
-    if(rarity != 'White'):
-        class_mod_prefix = class_mod_module.get_class_mod_prefix_function(class_mod_type)()
+    # Generation of class mods in Tiny Tina DLC is slightly different to
+    # non-DLC class mods, so we must handle them differently
+
+    if(not class_mod_type_info['is_dlc']):
+        # White rarity class mods only change stats, they don't affect skill
+        # points
+        if(rarity != 'White'):
+            class_mod_prefix = class_mod_module.get_class_mod_prefix_function(class_mod_type_info['type'])()
+            class_mod_info = {
+                'prefix': class_mod_prefix,
+                'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type_info['type'])(rarity, level),
+                'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type_info['type'])(rarity, level, class_mod_prefix)
+            }
+        else:
+            class_mod_info = {
+                'prefix': 'none',
+                'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
+                'skill_point_changes': 'none'
+            }
+    else:
+        class_mod_prefixes = class_mod_module.get_class_mod_prefix_function(class_mod_type_info['type'])()
+        if(class_mod_prefixes['alignment_1'] != class_mod_prefixes['alignment_2']):
+            class_mod_prefix = class_mod_prefixes['alignment_1'] + ' ' + class_mod_prefixes['alignment_2']
+        else:
+            # We have 2 Neutral prefixes, which becomes 'True Neutral' rather 
+            # than 'Neutral Neutral'
+            class_mod_prefix = 'True Neutral'
         class_mod_info = {
             'prefix': class_mod_prefix,
-            'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
-            'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type)(rarity, level, class_mod_prefix)
-        }
-    else:
-        class_mod_info = {
-            'prefix': 'none',
-            'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
-            'skill_point_changes': 'none'
+            'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type_info['type'])(rarity, level, class_mod_prefixes),
+            'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type_info['type'])(rarity, level)
         }
 
-    return ClassMod(level, rarity, class_mod_character, class_mod_type, class_mod_prefix, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
+    return ClassMod(level, rarity, class_mod_character, class_mod_type_info['type'], class_mod_prefix, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
 
 def choose_character():
     random_integer = random.randint(0,5)
