@@ -30,9 +30,10 @@ def generate(rarity, level):
                 'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type_info['type'])(rarity, level, class_mod_prefix)
             }
         else:
+            class_mod_prefix = 'none'
             class_mod_info = {
-                'prefix': 'none',
-                'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type)(rarity, level),
+                'prefix': class_mod_prefix,
+                'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type_info['type'])(rarity, level),
                 'skill_point_changes': 'none'
             }
     else:
