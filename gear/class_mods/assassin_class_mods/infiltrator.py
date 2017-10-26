@@ -1,4 +1,5 @@
 import random
+from .. import general_class_mod_functions
 
 def choose_prefix():
     # Only used for green rarity and upwards
@@ -35,36 +36,11 @@ def calculate_skill_point_changes(rarity, level, prefix):
     # Have a placeholder value of 1 for the skill point boost for now
     all_skill_point_boosts[fixed_skill_boost_by_com_prefix[prefix]] = 1
 
-    # Now calculate any other skill point boosts depending on the rarity
-
-    leftover_fixed_skills = []
-
-    # Grab the 2 skills leftover and put them in leftover_fixed_skills
-    for com_prefix in fixed_skill_boost_by_com_prefix:
-        if(com_prefix != prefix):
-            leftover_fixed_skills.append(fixed_skill_boost_by_com_prefix[com_prefix])
-
-    other_skills_to_boost = []
-
-    if(rarity == 'Blue'):
-        # Get 1 more skill to boost
-
-        # Need to do a roll on the two skills in leftover_fixed_skills
-
-        random_integer = random.randint(0,1)
-        other_skills_to_boost.append(leftover_fixed_skills[random_integer])
-
-    elif(rarity == 'Purple'):
-        # Need to boost the other 2 skills in leftover_fixed_skills,
-        # so can simply set other_skills_to_boost equal to 
-        # leftover_fixed_skills
-
-        other_skills_to_boost = leftover_fixed_skills
-
-    # Now add the skills in other_skills_to_boost to all_skill_point_boosts
-
-    for x in range(0, len(other_skills_to_boost)):
-        # Have placeholder value of 1 for now
-        all_skill_point_boosts[other_skills_to_boost[x]] = 1
+    # If rarity is green then there's no need to get any more skills to
+    # boost, otherwise, call get_remaining_skills_to_boost in
+    # general_class_mod_functions
+    
+    if(rarity != 'Green'):
+        all_skill_point_boosts = general_class_mod_functions.get_remaining_skills_to_boost(rarity, prefix, fixed_skill_boost_by_com_prefix, all_skill_point_boosts)
 
     return all_skill_point_boosts
