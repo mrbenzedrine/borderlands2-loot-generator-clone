@@ -63,7 +63,12 @@ def choose_character():
 
 def get_character_class_mod_generation_function(character):
     switcher = {
-        'assassin': choose_assassin_class_mod_type
+        'assassin': choose_assassin_class_mod_type,
+        'commando': choose_commando_class_mod_type,
+        'gunzerker': choose_gunzerker_class_mod_type,
+        'mechromancer': choose_mechromancer_class_mod_type,
+        'psycho': choose_psycho_class_mod_type,
+        'siren': choose_siren_class_mod_type
     }
     return switcher.get(character, 'nothing')
 
@@ -80,5 +85,85 @@ def choose_assassin_class_mod_type():
         7: {'type': 'spy', 'is_dlc': False},
         8: {'type': 'stalker', 'is_dlc': False},
         9: {'type': 'survivor', 'is_dlc': False}
+    }
+    return switcher.get(random_integer, 'nothing')
+
+def choose_commando_class_mod_type():
+    random_integer = random.randint(0,9)
+    switcher = {
+        0: {'type': 'engineer', 'is_dlc': False},
+        1: {'type': 'grenadier', 'is_dlc': False},
+        2: {'type': 'gunner', 'is_dlc': False},
+        3: {'type': 'pointman', 'is_dlc': False},
+        4: {'type': 'ranger', 'is_dlc': True},
+        5: {'type': 'rifleman', 'is_dlc': False},
+        6: {'type': 'shock trooper', 'is_dlc': False},
+        7: {'type': 'specialist', 'is_dlc': False},
+        8: {'type': 'tactician', 'is_dlc': False},
+        9: {'type': 'veteran', 'is_dlc': False}
+    }
+    return switcher.get(random_integer, 'nothing')
+
+def choose_gunzerker_class_mod_type():
+    random_integer = random.randint(0,9)
+    switcher = {
+        0: {'type': 'beast', 'is_dlc': False},
+        1: {'type': 'bezerker', 'is_dlc': False},
+        2: {'type': 'devastator', 'is_dlc': False},
+        3: {'type': 'monk', 'is_dlc': True},
+        4: {'type': 'hoarder', 'is_dlc': False},
+        5: {'type': 'raider', 'is_dlc': False},
+        6: {'type': 'renegade', 'is_dlc': False},
+        7: {'type': 'tank', 'is_dlc': False},
+        8: {'type': 'titan', 'is_dlc': False},
+        9: {'type': 'war dog', 'is_dlc': False}
+    }
+    return switcher.get(random_integer, 'nothing')
+
+def choose_mechromancer_class_mod_type():
+    random_integer = random.randint(0,9)
+    switcher = {
+        0: {'type': 'anarchist', 'is_dlc': False},
+        1: {'type': 'catalyst', 'is_dlc': False},
+        2: {'type': 'jill of all trades', 'is_dlc': False},
+        3: {'type': 'necromancer', 'is_dlc': True},
+        4: {'type': 'prodigy', 'is_dlc': False},
+        5: {'type': 'punk', 'is_dlc': False},
+        6: {'type': 'roboteer', 'is_dlc': False},
+        7: {'type': 'sweetheart', 'is_dlc': False},
+        8: {'type': 'technophile', 'is_dlc': False},
+        9: {'type': 'zapper', 'is_dlc': False}
+    }
+    return switcher.get(random_integer, 'nothing')
+
+def choose_psycho_class_mod_type():
+    random_integer = random.randint(0,9)
+    switcher = {
+        0: {'type': 'barbarian', 'is_dlc': True},
+        1: {'type': 'blister', 'is_dlc': False},
+        2: {'type': 'crunch', 'is_dlc': False},
+        3: {'type': 'meat', 'is_dlc': False},
+        4: {'type': 'reaper', 'is_dlc': False},
+        5: {'type': 'sickle', 'is_dlc': False},
+        6: {'type': 'slab', 'is_dlc': False},
+        7: {'type': 'toast', 'is_dlc': False},
+        8: {'type': 'torch', 'is_dlc': False},
+        9: {'type': 'wound', 'is_dlc': False}
+    }
+    return switcher.get(random_integer, 'nothing')
+
+def choose_siren_class_mod_type():
+    random_integer = random.randint(0,9)
+    switcher = {
+        0: {'type': 'banshee', 'is_dlc': False},
+        1: {'type': 'binder', 'is_dlc': False},
+        2: {'type': 'cat', 'is_dlc': False},
+        3: {'type': 'cleric', 'is_dlc': True},
+        4: {'type': 'fox', 'is_dlc': False},
+        5: {'type': 'matriarch', 'is_dlc': False},
+        6: {'type': 'nurse', 'is_dlc': False},
+        7: {'type': 'trickster', 'is_dlc': False},
+        8: {'type': 'warder', 'is_dlc': False},
+        9: {'type': 'witch', 'is_dlc': False}
     }
     return switcher.get(random_integer, 'nothing')
