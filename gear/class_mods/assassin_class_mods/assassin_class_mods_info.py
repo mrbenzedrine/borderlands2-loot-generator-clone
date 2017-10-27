@@ -8,6 +8,10 @@ assassin_class_mods = {
             'Tricky': 'Unf0rseen',
             'Rugged': 'Ir0n Hand'
         }
+    },
+
+    'rogue': {
+        'fixed_skills_to_boost': ['Like the Wind', 'Tw0 Fang', 'Vel0city']
     }
 
 }

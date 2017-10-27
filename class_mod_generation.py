@@ -9,6 +9,7 @@ import gear.class_mods.psycho_class_mod_generation as psycho
 import gear.class_mods.siren_class_mod_generation as siren
 
 from gear.class_mods import non_dlc_class_mod_generation
+from gear.class_mods import dlc_class_mod_generation
 
 def generate(rarity, level):
     
@@ -39,7 +40,7 @@ def generate(rarity, level):
                 'skill_point_changes': 'none'
             }
     else:
-        class_mod_prefixes = class_mod_module.get_class_mod_prefix_function(class_mod_type_info['type'])()
+        class_mod_prefixes = dlc_class_mod_generation.choose_prefix()
         if(class_mod_prefixes['alignment_1'] != class_mod_prefixes['alignment_2']):
             class_mod_prefix = class_mod_prefixes['alignment_1'] + ' ' + class_mod_prefixes['alignment_2']
         else:
@@ -48,8 +49,8 @@ def generate(rarity, level):
             class_mod_prefix = 'True Neutral'
         class_mod_info = {
             'prefix': class_mod_prefix,
-            'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type_info['type'])(rarity, level, class_mod_prefixes),
-            'skill_point_changes': class_mod_module.get_skill_point_changes_function(class_mod_type_info['type'])(rarity, level)
+            'stat_changes': dlc_class_mod_generation.calculate_stat_changes(rarity, level, class_mod_prefixes),
+            'skill_point_changes': dlc_class_mod_generation.calculate_skill_point_changes(rarity, level, class_mod_character)
         }
 
     return ClassMod(level, rarity, class_mod_character, class_mod_type_info['type'], class_mod_prefix, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
