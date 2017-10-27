@@ -1,6 +1,6 @@
 import random
 
-from .assassin_class_mods.assassin_class_mods_info import assassin_class_mods
+from .assassin_class_mods_info import assassin_class_mods
 from .commando_class_mods_info import commando_class_mods
 from .gunzerker_class_mods_info import gunzerker_class_mods
 from .mechromancer_class_mods_info import mechromancer_class_mods
