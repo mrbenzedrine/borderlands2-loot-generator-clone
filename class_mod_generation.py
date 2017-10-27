@@ -8,6 +8,8 @@ import gear.class_mods.mechromancer_class_mod_generation as mechromancer
 import gear.class_mods.psycho_class_mod_generation as psycho
 import gear.class_mods.siren_class_mod_generation as siren
 
+from gear.class_mods import non_dlc_class_mod_generation
+
 def generate(rarity, level):
     
     class_mod_character = choose_character()
@@ -23,17 +25,17 @@ def generate(rarity, level):
         # White rarity class mods only change stats, they don't affect skill
         # points
         if(rarity != 'White'):
-            class_mod_prefix = class_mod_module.choose_prefix(class_mod_type_info['type'])
+            class_mod_prefix = non_dlc_class_mod_generation.choose_prefix(class_mod_character, class_mod_type_info['type'])
             class_mod_info = {
                 'prefix': class_mod_prefix,
-                'stat_changes': class_mod_module.calculate_stat_changes(class_mod_type_info['type'], rarity, level),
-                'skill_point_changes': class_mod_module.calculate_skill_point_changes(class_mod_type_info['type'], rarity, level, class_mod_prefix)
+                'stat_changes': non_dlc_class_mod_generation.calculate_stat_changes(class_mod_character, class_mod_type_info['type'], rarity, level),
+                'skill_point_changes': non_dlc_class_mod_generation.calculate_skill_point_changes(class_mod_character, class_mod_type_info['type'], rarity, level, class_mod_prefix)
             }
         else:
             class_mod_prefix = 'none'
             class_mod_info = {
                 'prefix': class_mod_prefix,
-                'stat_changes': class_mod_module.get_stat_changes_function(class_mod_type_info['type'])(rarity, level),
+                'stat_changes': non_dlc_class_mod_generation.calculate_stat_changes(class_mod_character, class_mod_type_info['type'], rarity, level),
                 'skill_point_changes': 'none'
             }
     else:
