@@ -1,12 +1,6 @@
 import random
 
 from gear.class_mods.class_mod import ClassMod
-import gear.class_mods.assassin_class_mod_generation as assassin
-import gear.class_mods.commando_class_mod_generation as commando
-import gear.class_mods.gunzerker_class_mod_generation as gunzerker
-import gear.class_mods.mechromancer_class_mod_generation as mechromancer
-import gear.class_mods.psycho_class_mod_generation as psycho
-import gear.class_mods.siren_class_mod_generation as siren
 
 from gear.class_mods import non_dlc_class_mod_generation
 from gear.class_mods import dlc_class_mod_generation
@@ -15,9 +9,9 @@ def generate(rarity, level):
     
     class_mod_character = choose_character()
 
-    class_mod_module = get_class_mod_module(class_mod_character)
+    character_class_mod_generation_function = get_character_class_mod_generation_function(class_mod_character)
 
-    class_mod_type_info = class_mod_module.choose_class_mod_type()
+    class_mod_type_info = character_class_mod_generation_function()
 
     # Generation of class mods in Tiny Tina DLC is slightly different to
     # non-DLC class mods, so we must handle them differently
@@ -67,13 +61,24 @@ def choose_character():
     }
     return switcher.get(random_integer, 'nothing')
 
-def get_class_mod_module(character):
+def get_character_class_mod_generation_function(character):
     switcher = {
-        'assassin': assassin,
-        'commando': commando,
-        'gunzerker': gunzerker,
-        'mechromancer': mechromancer,
-        'psycho': psycho,
-        'siren': siren
+        'assassin': choose_assassin_class_mod_type
     }
     return switcher.get(character, 'nothing')
+
+def choose_assassin_class_mod_type():
+    random_integer = random.randint(0,9)
+    switcher = {
+        0: {'type': 'infiltrator', 'is_dlc': False},
+        1: {'type': 'killer', 'is_dlc': False},
+        2: {'type': 'ninja', 'is_dlc': False},
+        3: {'type': 'professional', 'is_dlc': False},
+        4: {'type': 'rogue', 'is_dlc': True},
+        5: {'type': 'shot', 'is_dlc': False},
+        6: {'type': 'sniper', 'is_dlc': False},
+        7: {'type': 'spy', 'is_dlc': False},
+        8: {'type': 'stalker', 'is_dlc': False},
+        9: {'type': 'survivor', 'is_dlc': False}
+    }
+    return switcher.get(random_integer, 'nothing')
