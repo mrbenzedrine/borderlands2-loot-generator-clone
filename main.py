@@ -71,7 +71,7 @@ while True:
             return rarity
 
         def choose_level():
-            
+
             print("\nPlease input the level of the piece of gear")
 
             choice = input()
@@ -88,6 +88,38 @@ while True:
         piece_of_gear = gear_generation_module.generate(rarity, level)
 
     def choose_enemy_type_to_drop_loot():
-        pass
+        
+        print("\nPlease choose a type of enemy from the options below to generate a loot drop from:")
+        print("a: Chump\nb: Badass\nc: Super Badass\nd: Ultimate Badass\ne: Chubby/Tubby\nf: Raid Boss")
+
+        choice = input()
+
+        switcher = {
+            'a': 'Chump',
+            'b': 'Badass',
+            'c': 'Super Badass',
+            'd': 'Ultimate Badass',
+            'e': 'Chubby/Tubby',
+            'f': 'Raid Boss'
+        }
+
+        enemy_type = switcher.get(choice, 'nothing')
+
+        if(enemy_type == 'nothing'):
+            print("Invald choice, please choose a valid choice")
+
+        enemy_class_switcher = {
+            'Chump': Chump,
+            'Badass': Badass,
+            'Super Badass': SuperBadass,
+            'Ultimate Badass': UltimateBadass,
+            'Chubby/Tubby': Chubby,
+            'Raid Boss': RaidBoss
+        }
+
+        enemy_class = enemy_class_switcher.get(enemy_type, 'nothing')
+        enemy = enemy_class(1) # just set to level 1 for now
+        loot = loot_generation.enemy_loot_generation(enemy)
+        print(loot)
 
     initial_choice()
