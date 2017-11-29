@@ -1,6 +1,7 @@
 import random
 
 from gear.grenade_mods.grenade_mod import *
+import gear.grenade_mods.general_grenade_mod_functions as general_grenade_mod_functions
 
 def generate(rarity, level):
 
@@ -12,7 +13,7 @@ def generate(rarity, level):
 
     grenade_mod_type = choose_grenade_mod_type()
     grenade_mod_manufacturer = get_grenade_mod_manufacturer(grenade_mod_type)
-    grenade_mod_delivery_mechanism = choose_delivery_mechanism()
+    grenade_mod_delivery_mechanism = general_grenade_mod_functions.choose_delivery_mechanism()
 
     # Generate element of grenade
 
@@ -20,7 +21,7 @@ def generate(rarity, level):
         # All MIRV grenades can only be explosive
         grenade_mod_element = 'Explosive'
     else:
-        grenade_mod_element = choose_element()
+        grenade_mod_element = general_grenade_mod_functions.choose_element()
 
         # Now check if grenade type and element combo is valid
 
@@ -31,7 +32,7 @@ def generate(rarity, level):
                 break
             else:
                 print("Invalid grenade type element combo")
-                grenade_mod_element = choose_element()
+                grenade_mod_element = general_grenade_mod_functions.choose_element()
 
     GrenadeModClass = get_grenade_mod_type_class(grenade_mod_type)
 
@@ -95,30 +96,6 @@ def get_grenade_mod_type_class(grenade_mod_type):
         'singularity': Singularity
     }
     return switcher.get(grenade_mod_type, 'nothing')
-
-def choose_delivery_mechanism():
-    random_integer = random.randint(0,6)
-    switcher = {
-        0: 'Lobbed',
-        1: 'Lobbed Sticky',
-        2: 'Homing',
-        3: 'Homing Sticky',
-        4: 'Longbow',
-        5: 'Longbow Sticky',
-        6: 'Rubberised'
-    }
-    return switcher.get(random_integer, 'nothing')
-
-def choose_element():
-    random_integer = random.randint(0,4)
-    switcher = {
-        0: 'Incendiary',
-        1: 'Corrosion',
-        2: 'Explosion',
-        3: 'Shock',
-        4: 'Slag'
-    }
-    return switcher.get(random_integer, "nothing")
 
 def check_valid_type_element_combo(grenade_mod_type, element):
 
