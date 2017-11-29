@@ -2,6 +2,12 @@ import random
 
 from gear.grenade_mods.grenade_mod import *
 import gear.grenade_mods.general_grenade_mod_functions as general_grenade_mod_functions
+from gear.grenade_mods import area_of_effect
+from gear.grenade_mods import bouncing_betty
+from gear.grenade_mods import mirv
+from gear.grenade_mods import singularity
+from gear.grenade_mods import standard
+from gear.grenade_mods import transfusion
 
 def generate(rarity, level):
 
@@ -13,30 +19,13 @@ def generate(rarity, level):
 
     grenade_mod_type = choose_grenade_mod_type()
     grenade_mod_manufacturer = get_grenade_mod_manufacturer(grenade_mod_type)
-    grenade_mod_delivery_mechanism = general_grenade_mod_functions.choose_delivery_mechanism()
-
-    # Generate element of grenade
-
-    if(grenade_mod_type == 'mirv'):
-        # All MIRV grenades can only be explosive
-        grenade_mod_element = 'Explosive'
-    else:
-        grenade_mod_element = general_grenade_mod_functions.choose_element()
-
-        # Now check if grenade type and element combo is valid
-
-        while True:
-            print("%s is %s" % (grenade_mod_type, grenade_mod_element))
-            if(check_valid_type_element_combo(grenade_mod_type, grenade_mod_element) is True):
-                print("Valid grenade type element combo")
-                break
-            else:
-                print("Invalid grenade type element combo")
-                grenade_mod_element = general_grenade_mod_functions.choose_element()
 
     GrenadeModClass = get_grenade_mod_type_class(grenade_mod_type)
 
-    return GrenadeModClass(level, rarity, grenade_mod_manufacturer, grenade_mod_element, grenade_mod_delivery_mechanism)
+    grenade_mod_type_generation_module = get_grenade_mod_type_generation_module(grenade_mod_type)
+    grenade_mod_stats = grenade_mod_type_generation_module.generate(level, rarity)
+
+    return GrenadeModClass(level, rarity, grenade_mod_manufacturer, grenade_mod_stats)
 
 
 def choose_grenade_mod_type():
@@ -97,11 +86,13 @@ def get_grenade_mod_type_class(grenade_mod_type):
     }
     return switcher.get(grenade_mod_type, 'nothing')
 
-def check_valid_type_element_combo(grenade_mod_type, element):
-
-    test_1 = True
-
-    if(grenade_mod_type == 'area_of_effect'):
-        test_1 = (element != 'Slag' and element != 'Explosion')
-
-    return test_1
+def get_grenade_mod_type_generation_module(grenade_mod_type):
+    switcher = {
+        'area_of_effect': area_of_effect,
+        'bouncing_betty': bouncing_betty,
+        'mirv': mirv,
+        'singularity': singularity,
+        'standard': standard,
+        'transfusion': transfusion
+    }
+    return switcher.get(grenade_mod_type, 'nothing')
