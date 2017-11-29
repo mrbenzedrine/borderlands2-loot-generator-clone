@@ -1,6 +1,6 @@
 import random
 
-from gear.grenade_mods.grenade_mod import *
+from gear.grenade_mods.grenade_mod import GrenadeMod
 import gear.grenade_mods.general_grenade_mod_functions as general_grenade_mod_functions
 from gear.grenade_mods import area_of_effect
 from gear.grenade_mods import bouncing_betty
@@ -20,12 +20,10 @@ def generate(rarity, level):
     grenade_mod_type = choose_grenade_mod_type()
     grenade_mod_manufacturer = get_grenade_mod_manufacturer(grenade_mod_type)
 
-    GrenadeModClass = get_grenade_mod_type_class(grenade_mod_type)
-
     grenade_mod_type_generation_module = get_grenade_mod_type_generation_module(grenade_mod_type)
     grenade_mod_stats = grenade_mod_type_generation_module.generate(level, rarity)
 
-    return GrenadeModClass(level, rarity, grenade_mod_manufacturer, grenade_mod_stats)
+    return GrenadeMod(level, rarity, grenade_mod_manufacturer, grenade_mod_type, grenade_mod_stats)
 
 
 def choose_grenade_mod_type():
@@ -74,17 +72,6 @@ def choose_mirv_manufacturer():
         1: 'Torgue'
     }
     return switcher.get(random_integer, 'nothing')
-
-def get_grenade_mod_type_class(grenade_mod_type):
-    switcher = {
-        'standard': GrenadeMod,
-        'area_of_effect': AreaOfEffect,
-        'bouncing_betty': BouncingBetty,
-        'transfusion': Transfusion,
-        'mirv': MIRV,
-        'singularity': Singularity
-    }
-    return switcher.get(grenade_mod_type, 'nothing')
 
 def get_grenade_mod_type_generation_module(grenade_mod_type):
     switcher = {
