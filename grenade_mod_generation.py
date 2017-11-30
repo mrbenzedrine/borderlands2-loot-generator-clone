@@ -21,7 +21,11 @@ def generate(rarity, level):
     grenade_mod_manufacturer = get_grenade_mod_manufacturer(grenade_mod_type)
 
     grenade_mod_type_generation_module = get_grenade_mod_type_generation_module(grenade_mod_type)
-    grenade_mod_stats = grenade_mod_type_generation_module.generate(level, rarity)
+    grenade_mod_stats = {
+        'main_stats': grenade_mod_type_generation_module.calculate_main_stats(level, rarity),
+        'other_stats': grenade_mod_type_generation_module.generate_other_stats(),
+        'type_specific_stats': grenade_mod_type_generation_module.calculate_type_specific_stats(level, rarity)
+    }
 
     return GrenadeMod(level, rarity, grenade_mod_manufacturer, grenade_mod_type, grenade_mod_stats)
 
