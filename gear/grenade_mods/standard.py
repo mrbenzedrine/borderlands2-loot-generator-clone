@@ -6,7 +6,7 @@ def generate(level, rarity):
 
     other_stats = generate_other_stats()
 
-    type_specific_stats = 'none'
+    type_specific_stats = calculate_type_specific_stats(level, rarity)
 
     stats = {
         'main_stats': main_stats,
@@ -35,3 +35,7 @@ def generate_other_stats():
         'element': general_grenade_mod_functions.choose_element(),
         'delivery_mechanism': general_grenade_mod_functions.choose_delivery_mechanism()
     }
+
+def calculate_type_specific_stats(level, rarity):
+
+    return 'none'
