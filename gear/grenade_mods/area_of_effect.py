@@ -4,21 +4,7 @@ def generate(level, rarity):
 
     main_stats = calculate_main_stats(level, rarity)
 
-    grenade_mod_element = general_grenade_mod_functions.choose_element()
-
-    while True:
-        print("AoE grenade has element %s" % grenade_mod_element)
-        if(check_valid_element(grenade_mod_element) is True):
-            print("Valid AoE grenade element")
-            break
-        else:
-            print("Invalid AoE grenade element")
-            grenade_mod_element = general_grenade_mod_functions.choose_element()
-
-    other_stats = {
-        'element': grenade_mod_element,
-        'delivery_mechanism': general_grenade_mod_functions.choose_delivery_mechanism()
-    }
+    other_stats = generate_other_stats()
 
     type_specific_stats = calculate_type_specific_stats(level, rarity)
 
@@ -39,6 +25,26 @@ def calculate_main_stats(level, rarity):
     }
 
     return main_stats
+
+def generate_other_stats():
+
+    grenade_mod_element = general_grenade_mod_functions.choose_element()
+
+    while True:
+        print("AoE grenade has element %s" % grenade_mod_element)
+        if(check_valid_element(grenade_mod_element) is True):
+            print("Valid AoE grenade element")
+            break
+        else:
+            print("Invalid AoE grenade element")
+            grenade_mod_element = general_grenade_mod_functions.choose_element()
+
+    other_stats = {
+        'element': grenade_mod_element,
+        'delivery_mechanism': general_grenade_mod_functions.choose_delivery_mechanism()
+    }
+
+    return other_stats
 
 def calculate_type_specific_stats(level, rarity):
 

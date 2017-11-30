@@ -4,10 +4,7 @@ def generate(level, rarity):
 
     main_stats = calculate_main_stats(level, rarity)
 
-    other_stats = {
-        'element': 'Explosion',
-        'delivery_mechanism': general_grenade_mod_functions.choose_delivery_mechanism()
-    }
+    other_stats = generate_other_stats()
 
     type_specific_stats = calculate_type_specific_stats(level, rarity)
 
@@ -28,6 +25,13 @@ def calculate_main_stats(level, rarity):
     }
 
     return main_stats
+
+def generate_other_stats():
+
+    return {
+        'element': 'Explosion',
+        'delivery_mechanism': general_grenade_mod_functions.choose_delivery_mechanism()
+    }
 
 def calculate_type_specific_stats(level, rarity):
 
