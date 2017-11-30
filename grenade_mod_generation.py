@@ -1,7 +1,6 @@
 import random
 
 from gear.grenade_mods.grenade_mod import GrenadeMod
-import gear.grenade_mods.general_grenade_mod_functions as general_grenade_mod_functions
 from gear.grenade_mods import area_of_effect
 from gear.grenade_mods import bouncing_betty
 from gear.grenade_mods import mirv
