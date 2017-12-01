@@ -2,7 +2,7 @@ from . import general_shield_functions
 
 class Shield:
 
-    def __init__(self, manufacturer, parts, level, rarity, stats):
+    def __init__(self, manufacturer, parts, level, rarity, type, stats):
 
         # manufacturer: string; manufacturer of the shield,
         # 'Pangolin', 'Maliwan' etc
@@ -14,11 +14,12 @@ class Shield:
 
         # rarity: string; 'White', 'Green' etc
 
+        # type: string, gives the type of the shield
+
         # stats: dict, contains data about the stats of the shield
 
         self.manufacturer = manufacturer
-        self.type = 'shield' # just a regular shield with no special
-        # effects
+        self.type = type
         self.parts = parts
         self.level = level
         self.rarity = rarity
@@ -29,59 +30,3 @@ class Shield:
 
         # Stats that are specific to the shield type
         type_specific_stats = stats['type_specific_stats']
-
-class AbsorbShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'absorb'
-
-class AdaptiveShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'adaptive'
-
-class AmplifyShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'amplify'
-
-class BoosterShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'booster' 
-
-class NovaShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'nova'
-
-class SpikeShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'spike'
-
-class RoidShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'roid'
-
-class TurtleShield(Shield):
-
-    def __init__(self, manufacturer, parts, level, rarity, stats):
-
-        super().__init__(manufacturer, parts, level, rarity, stats)
-        self.type = 'turtle'
