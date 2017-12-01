@@ -10,9 +10,18 @@ def calculate_main_stats(level, rarity):
 
     return main_stats
 
-def calculate_type_specific_stats(level, rarity):
+def calculate_type_specific_stats(level, rarity, manufacturer):
+
+    if(manufacturer == 'Torgue'):
+        spike_element = 'Explosion'
+    else:
+        spike_element = general_shield_functions.choose_element()
+
+    # Check if the element and manufacturer are a valid combination
+
+    valid_spike_element = general_shield_functions.get_valid_nova_spike_manufacturer_element_combo(manufacturer, spike_element, 'spike')
 
     return {
-        'element': general_shield_functions.choose_element(),
+        'element': valid_spike_element,
         'spike_damage': 0
     }
