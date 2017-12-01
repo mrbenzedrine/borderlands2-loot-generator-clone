@@ -1,5 +1,3 @@
-from . import general_shield_functions
-
 class Shield:
 
     def __init__(self, manufacturer, parts, level, rarity, type, stats):
