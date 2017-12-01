@@ -1,5 +1,14 @@
 import random
-import gear.shields.shield as shield
+from gear.shields.shield import Shield
+from gear.shields import absorb
+from gear.shields import adaptive
+from gear.shields import amplify
+from gear.shields import booster
+from gear.shields import nova
+from gear.shields import roid
+from gear.shields import spike
+from gear.shields import standard
+from gear.shields import turtle
 
 def generate(rarity, level):
 
@@ -10,8 +19,6 @@ def generate(rarity, level):
     # shield was found in
 
     shield_type = choose_shield_type()
-
-    ShieldClass = get_shield_type_class(shield_type)
 
     shield_manufacturer = get_shield_manufacturer(shield_type)
     body_manufacturer = generate_manufacturer()
@@ -26,7 +33,20 @@ def generate(rarity, level):
 
     }
 
-    return ShieldClass(shield_manufacturer, shield_parts, level, rarity)
+    shield_type_generation_module = get_shield_type_generation_module(shield_type)
+    shield_main_stats = shield_type_generation_module.calculate_main_stats(level, rarity)
+
+    if(shield_type == 'nova' or shield_type == 'spike'):
+        shield_type_specific_stats = shield_type_generation_module.calculate_type_specific_stats(level, rarity, shield_manufacturer)
+    else:
+        shield_type_specific_stats = shield_type_generation_module.calculate_type_specific_stats(level, rarity)
+
+    shield_stats = {
+        'main_stats': shield_main_stats,
+        'type_specific_stats': shield_type_specific_stats
+    }
+
+    return Shield(shield_manufacturer, shield_parts, level, rarity, shield_type, shield_stats)
 
 def choose_shield_type():
     random_integer = random.randint(0,8)
@@ -42,20 +62,6 @@ def choose_shield_type():
         8: 'turtle'
     }
     return switcher.get(random_integer, 'nothing')
-
-def get_shield_type_class(shield_type):
-    switcher = {
-        'shield': shield.Shield,
-        'absorb': shield.AbsorbShield,
-        'adaptive': shield.AdaptiveShield,
-        'amplify': shield.AmplifyShield,
-        'booster': shield.BoosterShield,
-        'nova': shield.NovaShield,
-        'spike': shield.SpikeShield,
-        'roid': shield.RoidShield,
-        'turtle': shield.TurtleShield
-    }
-    return switcher.get(shield_type, 'nothing')
 
 def get_shield_manufacturer(shield_type):
     switcher = {
@@ -95,3 +101,17 @@ def generate_manufacturer():
         8: 'Vladof'
     }
     return switcher.get(random_integer, 'nothing')
+
+def get_shield_type_generation_module(shield_type):
+    switcher = {
+        'absorb': absorb,
+        'adaptive': adaptive,
+        'amplify': amplify,
+        'booster': booster,
+        'nova': nova,
+        'roid': roid,
+        'spike': spike,
+        'shield': standard,
+        'turtle': turtle
+    }
+    return switcher.get(shield_type, 'nothing')
