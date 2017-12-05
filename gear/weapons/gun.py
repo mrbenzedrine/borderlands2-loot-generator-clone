@@ -3,7 +3,7 @@ from . import weapons_stats_modifiers
 
 class Gun:
 
-    def __init__(self, type, parts, rarity, element, level, title, prefix):
+    def __init__(self, type, parts, rarity, element, level, stats, title, prefix):
 
         # type: string; tells us the type of gun, 'pistol', 
         # 'SMG' etc
@@ -23,6 +23,9 @@ class Gun:
         # dropped the gun / the level of the area in which the chest
         # that the gun was found in
 
+        # stats: dict, tells us the values of the stats that appear in the
+        # item card
+
         self.type = type
         self.parts = parts
         self.rarity = rarity
@@ -35,31 +38,7 @@ class Gun:
 
         self.level = level
 
-        self.stats = {
-
-            'damage': self.calculate_damage(),
-            'accuracy': self.calculate_accuracy(),
-            'fire_rate': self.calculate_fire_rate(),
-            'reload_speed': self.calculate_reload_speed(),
-            'magazine_size': self.calculate_magazine_size()
-
-        }
+        self.stats = stats
 
         self.title = title
         self.prefix = prefix
-
-    def calculate_damage(self):
-        return weapons_stats_modifiers.weapons_parts_stats_modifiers['body'][self.parts['body']]*15*weapons_stats_modifiers.level_modifer_function(self.level)*weapons_stats_modifiers.rarity_modifiers[self.rarity]
-
-    def calculate_accuracy(self):
-        return 10
-
-    def calculate_fire_rate(self):
-        return 10
-
-    def calculate_reload_speed(self):
-        return 10
-
-    def calculate_magazine_size(self):
-        return 10
-    
