@@ -1,6 +1,3 @@
-from . import weapons_lvl1_base_stats
-from . import weapons_stats_modifiers
-
 class Gun:
 
     def __init__(self, type, parts, rarity, element, level, stats, title, prefix):
