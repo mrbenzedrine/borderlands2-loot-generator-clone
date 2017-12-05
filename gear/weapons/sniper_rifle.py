@@ -89,3 +89,15 @@ def choose_element(weapon_manufacturer):
         weapon_element = general_weapon_functions.choose_weapon_element()
 
     return weapon_element
+
+def calculate_stats(level, rarity, parts, accessory):
+
+    stats = {
+        'damage': 0,
+        'accuracy': 0,
+        'fire_rate': 0,
+        'reload_speed': 0,
+        'magazine_size': 0
+    }
+
+    return stats
