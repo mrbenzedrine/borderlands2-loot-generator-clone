@@ -7,7 +7,7 @@ def calculate_stats(level, rarity):
 
     stats = {}
     for i in range(0,no_of_elemental_resistances):
-        stats[elemental_resistances[i] + ' resistance'] = get_elemental_resistances(level, rarity)
+        stats[elemental_resistances[i] + ' resistance'] = calculate_resistance(level, rarity)
 
     return stats
 
