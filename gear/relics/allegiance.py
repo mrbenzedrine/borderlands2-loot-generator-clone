@@ -18,7 +18,7 @@ def choose_manufacturer():
 
     random_integer = random.randint(0,7)
     switcher = {
-        0: 'Bandit'
+        0: 'Bandit',
         1: 'Dahl',
         2: 'Hyperion',
         3: 'Jakobs',
@@ -37,7 +37,7 @@ def get_manufacturer_possible_weapon_traits(manufacturer):
         'Hyperion': ['Damage', 'Max accuracy', 'Reload speed'],
         'Jakobs': ['Accuracy recovery', 'Magazine size', 'Recoil reduction'],
         'Maliwan': ['Damage', 'Fire rate', 'Reload speed'],
-        'Tediore' ['Damage', 'Magazine size', 'Recoil reduction'],
+        'Tediore': ['Damage', 'Magazine size', 'Recoil reduction'],
         'Torgue': ['Accuracy recovery', 'Fire rate', 'Magazine size'],
         'Vladof': ['Damage', 'Accuracy recovery', 'Recoil reduction']
     }
