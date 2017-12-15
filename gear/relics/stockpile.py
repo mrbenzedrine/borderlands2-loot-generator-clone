@@ -28,7 +28,7 @@ def get_ammo_types_to_boost(are_grenades_boosted, no_of_ammo_types):
     ammo_types_to_boost = []
     all_ammo_types = ['Assault rifle', 'Launcher', 'Pistol', 'SMG', 'Sniper rifle', 'Shotgun', 'Grenade']
 
-    if(!are_grenades_boosted):
+    if(not are_grenades_boosted):
         del all_ammo_types[all_ammo_types.index('Grenade')]
 
     for i in range(0,no_of_ammo_types):
