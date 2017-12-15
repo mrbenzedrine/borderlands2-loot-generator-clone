@@ -55,7 +55,7 @@ def get_traits_to_boost(no_of_traits_to_boost, list_of_traits):
         # and set traits_to_boost equal to that (since list_of_traits always
         # contains 3 traits
         del list_of_traits[random_integer]
-        traits_to_boost - list_of_traits
+        traits_to_boost = list_of_traits
 
     return traits_to_boost
 
