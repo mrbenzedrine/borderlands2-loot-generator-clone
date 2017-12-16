@@ -1,6 +1,7 @@
 import weapon_generation
 import shield_generation
 import grenade_mod_generation
+import relic_generation
 import random
 
 def enemy_loot_generation(enemy):
@@ -23,10 +24,11 @@ def chest_loot_generation():
     pass
 
 def choose_loot_type():
-    random_integer = random.randint(0,2)
+    random_integer = random.randint(0,3)
     switcher = {
         0: weapon_generation,
         1: shield_generation,
-        2: grenade_mod_generation
+        2: grenade_mod_generation,
+        3: relic_generation
     }
     return switcher.get(random_integer, 'nothing')
