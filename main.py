@@ -2,6 +2,7 @@ import weapon_generation
 import shield_generation
 import grenade_mod_generation
 import class_mod_generation
+import relic_generation
 import loot_generation
 from enemies.enemies import *
 
@@ -30,7 +31,7 @@ while True:
     def choose_gear_type_to_generate():
 
         print("\nPlease choose a piece of gear to generate from the options below:")
-        print("a: Gun\nb: Shield\nc: Grenade mod\nd: Class mod")
+        print("a: Gun\nb: Shield\nc: Grenade mod\nd: Class mod\ne: Relic")
 
         choice = input()
 
@@ -42,6 +43,8 @@ while True:
             choose_gear_rarity_and_level(grenade_mod_generation)
         elif(choice == 'd'):
             choose_gear_rarity_and_level(class_mod_generation)
+        elif(choice == 'e'):
+            choose_gear_rarity_and_level(relic_generation)
         else:
             print("Invalid choice, please choose a valid choice")
             choose_gear_type_to_generate()
