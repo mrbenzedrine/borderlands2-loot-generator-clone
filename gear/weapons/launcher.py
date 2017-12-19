@@ -48,7 +48,7 @@ def choose_launcher_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
+def is_manufacturer_element_combo_valid(manufacturer, element):
     # Torgue and Bandit launchers can be explosive only,
     # Maliwan CAN'T be explosive, and both Tediore and Vladof can be
     # any element apart from non-elemental
@@ -56,19 +56,15 @@ def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
     test_1 = True
     test_2 = True
     test_3 = True
-    test_4 = True
 
-    if(rarity != 'E-Tech'):
-        if(manufacturer == 'Torgue' or manufacturer == 'Bandit'):
-            test_1 = (element == 'Explosion')
-        elif(manufacturer == 'Maliwan'):
-            test_2 = (element != 'Explosion' and element != 'None')
-        elif(manufacturer == 'Tediore' or manufacturer == 'Vladof'):
-            test_3 = (element != 'None')
-    elif(rarity == 'E-Tech'):
-        test_4 = (element != 'None' and element != 'Explosion')
+    if(manufacturer == 'Torgue' or manufacturer == 'Bandit'):
+        test_1 = (element == 'Explosion')
+    elif(manufacturer == 'Maliwan'):
+        test_2 = (element != 'Explosion' and element != 'None')
+    elif(manufacturer == 'Tediore' or manufacturer == 'Vladof'):
+        test_3 = (element != 'None')
 
-    valid_combination = test_1 and test_2 and test_3 and test_4
+    valid_combination = test_1 and test_2 and test_3
 
     return valid_combination
 

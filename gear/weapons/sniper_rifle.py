@@ -47,25 +47,19 @@ def choose_sniper_rifle_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element, rarity):
+def is_manufacturer_element_combo_valid(manufacturer, element):
     # Jakobs must be non-elemental, and also Maliwan must be elemental,
     # but not explosive
 
     test_1 = True
     test_2 = True
-    test_3 = True
 
-    if(rarity != 'E-Tech'):
-        if(manufacturer == 'Jakobs'):
-            test_1 = (element == 'None')
-        elif(manufacturer == 'Maliwan'):
-            test_2 = (element != 'None')
-    elif(rarity == 'E-Tech'):
-        # No need to check for explosive sniper rifles, the check in
-        # general_weapon_functions.py takes care of that
-        test_3 = (element != 'None')
+    if(manufacturer == 'Jakobs'):
+        test_1 = (element == 'None')
+    elif(manufacturer == 'Maliwan'):
+        test_2 = (element != 'None')
 
-    valid_combination = test_1 and test_2 and test_3
+    valid_combination = test_1 and test_2
 
     return valid_combination
 
