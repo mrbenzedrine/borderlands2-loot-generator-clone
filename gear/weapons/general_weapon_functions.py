@@ -60,3 +60,14 @@ def green_blue_rarity_spawn_with_accessory():
         spawn_with_accesory = False
 
     return spawn_with_accesory
+
+def is_rarity_element_combo_valid(rarity, element):
+
+    # E-Tech rarity weapons cannot be non-elemental or explosive
+
+    if(rarity != 'E-Tech'):
+        is_valid = True
+    else:
+        is_valid = (element != 'None' and element != 'Explosion')
+
+    return is_valid
