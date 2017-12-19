@@ -53,12 +53,12 @@ def choose_assault_rifle_part_manufacturer():
 def is_manufacturer_element_combo_valid(manufacturer, element):
     # Only Torgue assault rifles can be explosive
 
-    test_1 = True
-
     if(element == 'Explosion'):
-        test_1 = (manufacturer == 'Torgue')
+        is_valid = manufacturer == 'Torgue'
+    else:
+        is_valid = manufacturer != 'Torgue'
 
-    return test_1
+    return is_valid
 
 def choose_accessory():
     random_integer = random.randint(0,6)
