@@ -71,3 +71,16 @@ def is_rarity_element_combo_valid(rarity, element):
         is_valid = (element != 'None' and element != 'Explosion')
 
     return is_valid
+
+def is_general_manufacturer_element_combo_valid(manufacturer, element):
+
+    if(manufacturer == 'Torgue'):
+        is_valid = element == 'Explosion'
+    elif(manufacturer == 'Maliwan'):
+        is_valid = (element != 'None' and element != 'Explosion')
+    elif(manufacturer == 'Jakobs'):
+        is_valid = element == 'None'
+    else:
+        is_valid = element != 'Explosion'
+
+    return is_valid
