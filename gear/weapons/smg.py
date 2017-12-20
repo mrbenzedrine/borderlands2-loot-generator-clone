@@ -39,17 +39,6 @@ def choose_smg_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-
-def is_manufacturer_element_combo_valid(manufacturer, element):
-    # Maliwan smg's MUST be elemental
-
-    test_1 = True
-
-    if(manufacturer == 'Maliwan'):
-        test_1 = (element != 'None')
-
-    return test_1
-
 def choose_accessory():
     # The attribute values describe the stat of the gun that is increased
     # by the corresponding accessory

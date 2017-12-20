@@ -31,7 +31,12 @@ def generate(rarity, level):
 
     while True:
         is_weapon_element_valid = general_weapon_functions.is_general_weapon_element_combo_valid(weapon_type, weapon_element)
-        is_manufacturer_element_valid = weapon_module.is_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element)
+
+        if(weapon_type == 'launcher'):
+            is_manufacturer_element_valid = weapon_module.is_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element)
+        else:
+            is_manufacturer_element_valid = general_weapon_functions.is_general_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element)
+
         is_rarity_element_valid = general_weapon_functions.is_rarity_element_combo_valid(rarity, weapon_element)
         if(is_weapon_element_valid and is_manufacturer_element_valid and is_rarity_element_valid):
             print("Valid weapon element combo")

@@ -48,16 +48,6 @@ def choose_shotgun_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
-    # Only Torgue shotguns can be explosive
-
-    test_1 = True
-
-    if(element == 'Explosion'):
-        test_1 = (manufacturer == 'Torgue')
-
-    return test_1
-
 def choose_accessory():
     random_integer = random.randint(0,6)
     switcher = {

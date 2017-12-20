@@ -47,22 +47,6 @@ def choose_sniper_rifle_part_manufacturer():
     }
     return switcher.get(random_integer, 'nothing')
 
-def is_manufacturer_element_combo_valid(manufacturer, element):
-    # Jakobs must be non-elemental, and also Maliwan must be elemental,
-    # but not explosive
-
-    test_1 = True
-    test_2 = True
-
-    if(manufacturer == 'Jakobs'):
-        test_1 = (element == 'None')
-    elif(manufacturer == 'Maliwan'):
-        test_2 = (element != 'None')
-
-    valid_combination = test_1 and test_2
-
-    return valid_combination
-
 def choose_accessory():
     random_integer = random.randint(0,6)
     switcher = {
