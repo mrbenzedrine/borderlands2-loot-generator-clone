@@ -100,9 +100,13 @@ def calculate_skill_point_changes(rarity, level, character):
         # the skill with that index in fixed_skills_to_boost, and then
         # take the remaining 2 skills left
 
+        skills_to_boost = []
         random_integer = random.randint(0,2)
-        fixed_skills_to_boost.remove(fixed_skills_to_boost[random_integer])
-        skills_to_boost = fixed_skills_to_boost
+        indices_to_get = list(range(0,3))
+        del indices_to_get[random_integer]
+
+        for index in indices_to_get:
+            skills_to_boost.append(fixed_skills_to_boost[index])
 
     elif(rarity == 'Purple'):
         skills_to_boost = fixed_skills_to_boost
