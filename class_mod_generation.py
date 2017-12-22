@@ -47,7 +47,7 @@ def generate(rarity, level):
             'skill_point_changes': dlc_class_mod_generation.calculate_skill_point_changes(rarity, level, class_mod_character)
         }
 
-    return ClassMod(level, rarity, class_mod_character, class_mod_type_info['type'], class_mod_prefix, class_mod_info['stat_changes'], class_mod_info['skill_point_changes'])
+    return ClassMod(level, rarity, class_mod_character, class_mod_type_info['type'], class_mod_prefix, class_mod_info)
 
 def choose_character():
     random_integer = random.randint(0,5)

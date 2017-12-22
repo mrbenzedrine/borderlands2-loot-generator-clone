@@ -1,6 +1,6 @@
 class ClassMod:
 
-    def __init__(self, level, rarity, character, type, prefix, stat_changes, skill_point_changes):
+    def __init__(self, level, rarity, character, type, prefix, stats):
 
         # level: integer telling what the level requirement of the class 
         # mod is
@@ -10,20 +10,12 @@ class ClassMod:
         # character: string telling us which character this class mod is 
         # for
 
-        # stat_changes: dict where the keys represent the name of the changed
-        # stat and the values are also a string telling us how that stat has
-        # been altered by the class mod
-
-        # skill_point_changes: dict where the keys are strings denoting the
-        # skills that have had extra points added to by the class mod and the
-        # values are integers telling us how many extra points are added to
-        # a particular skill
-
+        # stats: dict giving the stats changes of the class mod, and the
+        # skill point changes
 
         self.level = level
         self.rarity = rarity
         self.character = character
         self.type = type
         self.prefix = prefix
-        self.stat_changes = stat_changes
-        self.skill_point_changes = skill_point_changes
+        self.stats = stats
