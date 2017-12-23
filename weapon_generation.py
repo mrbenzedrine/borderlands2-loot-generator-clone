@@ -87,7 +87,7 @@ def generate(rarity, level):
 
     weapon_stats = weapon_module.calculate_stats(level, rarity, weapon_parts, weapon_accessory)
 
-    return Gun(weapon_type, weapon_parts, rarity, weapon_element, level, weapon_stats, weapon_naming_info['weapon_title'], weapon_naming_info['weapon_prefix'])
+    return Gun(level, rarity, weapon_type, weapon_stats, weapon_parts, weapon_element, weapon_naming_info['weapon_title'], weapon_naming_info['weapon_prefix'])
 
 
 def choose_weapon_type():
