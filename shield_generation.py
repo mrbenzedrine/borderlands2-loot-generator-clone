@@ -46,7 +46,7 @@ def generate(rarity, level):
         'type_specific_stats': shield_type_specific_stats
     }
 
-    return Shield(shield_manufacturer, shield_parts, level, rarity, shield_type, shield_stats)
+    return Shield(level, rarity, shield_type, shield_stats, shield_manufacturer, shield_parts)
 
 def choose_shield_type():
     random_integer = random.randint(0,8)

@@ -2,7 +2,7 @@ from ..gear import Gear
 
 class Shield(Gear):
 
-    def __init__(self, manufacturer, parts, level, rarity, type, stats):
+    def __init__(self, level, rarity, type, stats, manufacturer, parts):
 
         # manufacturer: string; manufacturer of the shield,
         # 'Pangolin', 'Maliwan' etc
