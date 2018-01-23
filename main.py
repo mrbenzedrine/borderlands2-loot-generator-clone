@@ -78,7 +78,12 @@ while True:
             print("\nPlease input the level of the piece of gear")
 
             choice = input()
-            level = int(choice)
+
+            try:
+                level = int(choice)
+            except ValueError:
+                print("The level must be a positive integer.")
+                return choose_level()
 
             return level
 
