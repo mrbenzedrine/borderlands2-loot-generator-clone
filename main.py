@@ -81,6 +81,8 @@ while True:
 
             try:
                 level = int(choice)
+                if level <= 0:
+                    raise ValueError("The level must be a positive integer.")
             except ValueError:
                 print("The level must be a positive integer.")
                 return choose_level()
