@@ -4,7 +4,12 @@ import grenade_mod_generation
 import class_mod_generation
 import relic_generation
 import loot_generation
-from enemies.enemies import *
+from enemies.enemies import Chump
+from enemies.enemies import Badass
+from enemies.enemies import SuperBadass
+from enemies.enemies import UltimateBadass
+from enemies.enemies import Chubby
+from enemies.enemies import RaidBoss
 
 while True:
 
