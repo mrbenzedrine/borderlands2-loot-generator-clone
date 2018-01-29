@@ -20,9 +20,8 @@ def choose_prefix(character, class_mod_type):
     }.get(character, 'nothing')
 
     possible_prefixes = character_class_mod_info[class_mod_type]['prefixes']
-    random_integer = random.randint(0,2)
 
-    return possible_prefixes[random_integer]
+    return random.choice(possible_prefixes)
 
 def calculate_stat_changes(character, class_mod_type, rarity, level):
     character_class_mod_info = {
