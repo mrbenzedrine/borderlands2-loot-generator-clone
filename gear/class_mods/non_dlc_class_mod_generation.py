@@ -37,8 +37,8 @@ def calculate_stat_changes(character, class_mod_type, rarity, level):
     stat_changes = {}
 
     # Use a placeholder value of +0% for now
-    for x in range(0, len(stats_to_change)):
-        stat_changes[stats_to_change[x]] = '+0%'
+    for stat in stats_to_change:
+        stat_changes[stat] = '+0%'
 
     return stat_changes
 
