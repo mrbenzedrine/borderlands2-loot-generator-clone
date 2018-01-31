@@ -68,7 +68,7 @@ def calculate_skill_point_changes(character, class_mod_type, rarity, level, pref
     # boost, otherwise, call get_remaining_skills_to_boost in
     # general_class_mod_functions
     
-    if(rarity != 'Green'):
+    if rarity != 'Green':
         all_skill_point_boosts = general_class_mod_functions.get_remaining_skills_to_boost(rarity, prefix, fixed_skills_to_boost_by_com_prefix, all_skill_point_boosts)
 
     return all_skill_point_boosts
