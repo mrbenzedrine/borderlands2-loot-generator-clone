@@ -113,8 +113,8 @@ def calculate_skill_point_changes(rarity, level, character):
 
     # Finally, add the skills in skills_to_boost to all_skill_point_boosts
 
-    for x in range(0, len(skills_to_boost)):
+    for skill in skills_to_boost:
         # Have placeholder value of 1 for now
-        all_skill_point_boosts[skills_to_boost[x]] = 1
+        all_skill_point_boosts[skill] = 1
 
     return all_skill_point_boosts
