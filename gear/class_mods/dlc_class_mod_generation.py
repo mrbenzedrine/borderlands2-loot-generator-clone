@@ -84,17 +84,17 @@ def calculate_skill_point_changes(rarity, level, character):
 
     fixed_skills_to_boost = character_class_mod_info_dict['fixed_skills_to_boost']
 
-    if(rarity == 'White'):
+    if rarity == 'White':
         # White rarity class mods offer no skill boosts, so lets just
         # return an empty list
         skills_to_boost = []
-    elif(rarity == 'Green'):
+    elif rarity == 'Green':
         # Pick 1 skill from fixed_skills_to_boost
 
         random_integer = random.randint(0,2)
         skills_to_boost = [fixed_skills_to_boost[random_integer]]
 
-    elif(rarity == 'Blue'):
+    elif rarity == 'Blue':
         # Need to pick 2 skills from fixed_skills_to_boost, so what
         # we'll do is generate a random integer between 0 and 2, remove
         # the skill with that index in fixed_skills_to_boost, and then
@@ -108,7 +108,7 @@ def calculate_skill_point_changes(rarity, level, character):
         for index in indices_to_get:
             skills_to_boost.append(fixed_skills_to_boost[index])
 
-    elif(rarity == 'Purple'):
+    elif rarity == 'Purple':
         skills_to_boost = fixed_skills_to_boost
 
     # Finally, add the skills in skills_to_boost to all_skill_point_boosts
