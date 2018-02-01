@@ -69,16 +69,14 @@ def get_alignment_two_stat_change(alignment):
 
 def calculate_skill_point_changes(rarity, level, character):
                                 
-    switcher = {
+    character_class_mod_info_dict = {
         'assassin': assassin_class_mods['rogue'],
         'commando': commando_class_mods['ranger'],
         'gunzerker': gunzerker_class_mods['monk'],
         'mechromancer': mechromancer_class_mods['necromancer'],
         'psycho': psycho_class_mods['barbarian'],
         'siren': siren_class_mods['cleric']
-    }
-
-    character_class_mod_info_dict = switcher.get(character, 'nothing')
+    }.get(character, 'nothing')
 
     all_skill_point_boosts = {}
 
