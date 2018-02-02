@@ -10,31 +10,13 @@ from .siren_class_mods_info import siren_class_mods
 def choose_prefix():
     # Need to roll for 2 different 'alignments'
 
-    alignment_1 = choose_alignment_one()
-    alignment_2 = choose_alignment_two()
+    alignment_one_possibilities = ['Chaotic', 'Lawful', 'Neutral']
+    alignment_two_possibilities = ['Evil', 'Good', 'Neutral']
 
     return {
-        'alignment_1': alignment_1,
-        'alignment_2': alignment_2
+        'alignment_1': random.choice(alignment_one_possibilities),
+        'alignment_2': random.choice(alignment_two_possibilities)
     }
-
-def choose_alignment_one():
-    random_integer = random.randint(0,2)
-    switcher = {
-        0: 'Chaotic',
-        1: 'Lawful',
-        2: 'Neutral'
-    }
-    return switcher.get(random_integer, 'nothing')
-
-def choose_alignment_two():
-    random_integer = random.randint(0,2)
-    switcher = {
-        0: 'Evil',
-        1: 'Good',
-        2: 'Neutral'
-    }
-    return switcher.get(random_integer, 'nothing')
 
 def calculate_stat_changes(rarity, level, alignments):
     alignment_one_stat_change = get_alignment_one_stat_change(alignments['alignment_1'])
