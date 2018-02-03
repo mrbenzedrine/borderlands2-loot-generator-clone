@@ -6,8 +6,10 @@ from gear.class_mods import non_dlc_class_mod_generation
 from gear.class_mods import dlc_class_mod_generation
 
 def generate(rarity, level):
+
+    characters = ['assassin', 'commando', 'gunzerker', 'mechromancer', 'psycho', 'siren']
     
-    class_mod_character = choose_character()
+    class_mod_character = random.choice(characters)
     class_mod_type_info = random.choice(class_mod_types[class_mod_character])
 
     # Generation of class mods in Tiny Tina DLC is slightly different to
@@ -42,18 +44,6 @@ def generate(rarity, level):
         }
 
     return ClassMod(level, rarity, class_mod_type_info['type'], class_mod_info, class_mod_character, class_mod_prefix)
-
-def choose_character():
-    random_integer = random.randint(0,5)
-    switcher = {
-        0: 'assassin',
-        1: 'commando',
-        2: 'gunzerker',
-        3: 'mechromancer',
-        4: 'psycho',
-        5: 'siren'
-    }
-    return switcher.get(random_integer, 'nothing')
 
 class_mod_types = {
 
