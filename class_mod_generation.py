@@ -15,10 +15,10 @@ def generate(rarity, level):
     # Generation of class mods in Tiny Tina DLC is slightly different to
     # non-DLC class mods, so we must handle them differently
 
-    if(not class_mod_type_info['is_dlc']):
+    if not class_mod_type_info['is_dlc']:
         # White rarity class mods only change stats, they don't affect skill
         # points
-        if(rarity != 'White'):
+        if rarity != 'White':
             class_mod_prefix = non_dlc_class_mod_generation.choose_prefix(class_mod_character, class_mod_type_info['type'])
             class_mod_info = {
                 'stat_changes': non_dlc_class_mod_generation.calculate_stat_changes(class_mod_character, class_mod_type_info['type'], rarity, level),
@@ -32,7 +32,7 @@ def generate(rarity, level):
             }
     else:
         class_mod_prefixes = dlc_class_mod_generation.choose_prefix()
-        if(class_mod_prefixes['alignment_1'] != class_mod_prefixes['alignment_2']):
+        if class_mod_prefixes['alignment_1'] != class_mod_prefixes['alignment_2']:
             class_mod_prefix = class_mod_prefixes['alignment_1'] + ' ' + class_mod_prefixes['alignment_2']
         else:
             # We have 2 Neutral prefixes, which becomes 'True Neutral' rather 
