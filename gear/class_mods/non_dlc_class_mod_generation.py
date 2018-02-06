@@ -9,19 +9,23 @@ from .siren_class_mods_info import siren_class_mods
 
 from . import general_class_mod_functions
 
-def choose_prefix(character, class_mod_type):
-    character_class_mod_info = {
-        'assassin': assassin_class_mods,
-        'commando': commando_class_mods,
-        'gunzerker': gunzerker_class_mods,
-        'mechromancer': mechromancer_class_mods,
-        'psycho': psycho_class_mods,
-        'siren': siren_class_mods
-    }.get(character, 'nothing')
+def choose_prefix(character, class_mod_type, rarity):
 
-    possible_prefixes = character_class_mod_info[class_mod_type]['prefixes']
+    if rarity != 'White':
+        character_class_mod_info = {
+            'assassin': assassin_class_mods,
+            'commando': commando_class_mods,
+            'gunzerker': gunzerker_class_mods,
+            'mechromancer': mechromancer_class_mods,
+            'psycho': psycho_class_mods,
+            'siren': siren_class_mods
+        }.get(character, 'nothing')
 
-    return random.choice(possible_prefixes)
+        possible_prefixes = character_class_mod_info[class_mod_type]['prefixes']
+
+        return random.choice(possible_prefixes)
+    else:
+        return 'none'
 
 def calculate_stat_changes(character, class_mod_type, rarity, level):
     character_class_mod_info = {
