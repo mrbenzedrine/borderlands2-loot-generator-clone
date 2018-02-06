@@ -16,21 +16,11 @@ def generate(rarity, level):
     # non-DLC class mods, so we must handle them differently
 
     if not class_mod_type_info['is_dlc']:
-        # White rarity class mods only change stats, they don't affect skill
-        # points
-
         class_mod_prefix = non_dlc_class_mod_generation.choose_prefix(class_mod_character, class_mod_type_info['type'], rarity)
-
-        if rarity != 'White':
-            class_mod_info = {
-                'stat_changes': non_dlc_class_mod_generation.calculate_stat_changes(class_mod_character, class_mod_type_info['type'], rarity, level),
-                'skill_point_changes': non_dlc_class_mod_generation.calculate_skill_point_changes(class_mod_character, class_mod_type_info['type'], rarity, level, class_mod_prefix)
-            }
-        else:
-            class_mod_info = {
-                'stat_changes': non_dlc_class_mod_generation.calculate_stat_changes(class_mod_character, class_mod_type_info['type'], rarity, level),
-                'skill_point_changes': 'none'
-            }
+        class_mod_info = {
+            'stat_changes': non_dlc_class_mod_generation.calculate_stat_changes(class_mod_character, class_mod_type_info['type'], rarity, level),
+            'skill_point_changes': non_dlc_class_mod_generation.calculate_skill_point_changes(class_mod_character, class_mod_type_info['type'], rarity, level, class_mod_prefix)
+        }
     else:
         class_mod_prefixes = dlc_class_mod_generation.choose_prefix()
         if class_mod_prefixes['alignment_1'] != class_mod_prefixes['alignment_2']:
