@@ -71,8 +71,7 @@ def calculate_skill_point_changes(rarity, level, character):
     elif rarity == 'Green':
         # Pick 1 skill from fixed_skills_to_boost
 
-        random_integer = random.randint(0,2)
-        skills_to_boost = [fixed_skills_to_boost[random_integer]]
+        skills_to_boost = [random.choice(fixed_skills_to_boost)]
 
     elif rarity == 'Blue':
         # Need to pick 2 skills from fixed_skills_to_boost, so what
