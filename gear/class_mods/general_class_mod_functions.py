@@ -5,12 +5,12 @@ def get_remaining_skills_to_boost(rarity, com_prefix, fixed_skills_from_com_to_b
     leftover_fixed_skills = []
 
     for prefix in fixed_skills_from_com_to_boost:
-        if(prefix != com_prefix):
+        if prefix != com_prefix:
             leftover_fixed_skills.append(fixed_skills_from_com_to_boost[prefix])
 
     other_skills_to_boost = []
 
-    if(rarity == 'Blue'):
+    if rarity == 'Blue':
         # Get 1 extra skill
 
         random_integer = random.randint(0,1)
