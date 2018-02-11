@@ -33,13 +33,13 @@ def generate(rarity, level):
     while True:
         is_weapon_element_valid = general_weapon_functions.is_general_weapon_element_combo_valid(weapon_type, weapon_element)
 
-        if(weapon_type == 'launcher'):
+        if weapon_type == 'launcher':
             is_manufacturer_element_valid = weapon_module.is_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element)
         else:
             is_manufacturer_element_valid = general_weapon_functions.is_general_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element)
 
         is_rarity_element_valid = general_weapon_functions.is_rarity_element_combo_valid(rarity, weapon_element)
-        if(is_weapon_element_valid and is_manufacturer_element_valid and is_rarity_element_valid):
+        if is_weapon_element_valid and is_manufacturer_element_valid and is_rarity_element_valid:
             print("Valid weapon element combo")
             print("%s is %s " % (weapon_type, weapon_element))
             break
@@ -51,20 +51,20 @@ def generate(rarity, level):
 
     # Maliwan smg's have a special naming case, hence the check below
 
-    if(weapon_type == 'smg' and weapon_parts['barrel'] == 'Maliwan'):
+    if weapon_type == 'smg' and weapon_parts['barrel'] == 'Maliwan':
         weapon_title = weapon_prefixes_titles.names['title']['smg'][weapon_parts['body']][weapon_parts['barrel']][weapon_element]
     else:
         weapon_title = weapon_prefixes_titles.names['title'][weapon_type][weapon_parts['body']][weapon_parts['barrel']]
 
-    if(rarity == 'White'):
+    if rarity == 'White':
         spawn_with_accessory = False
-    elif(rarity == 'Green' or rarity == 'Blue'):
+    elif rarity == 'Green' or rarity == 'Blue':
         spawn_with_accessory = general_weapon_functions.green_blue_rarity_spawn_with_accessory()
     else:
         # Purple and above ALWAYS spawn with an accessory
         spawn_with_accessory = True
 
-    if(spawn_with_accessory is True):
+    if spawn_with_accessory is True:
         weapon_accessory = weapon_module.choose_accessory()
         weapon_prefix = weapon_prefixes_titles.names['prefix'][weapon_type][weapon_parts['body']][weapon_accessory]
 
