@@ -19,7 +19,8 @@ def generate(rarity, level):
     # the item or the level of the area in which the chest that
     # the item was found in was
 
-    weapon_type = choose_weapon_type()
+    weapon_types = ['assault_rifle', 'launcher', 'pistol', 'shotgun', 'smg', 'sniper_rifle']
+    weapon_type = random.choice(weapon_types)
 
     weapon_module = generate_weapon_type(weapon_type)
 
@@ -88,19 +89,6 @@ def generate(rarity, level):
     weapon_stats = weapon_module.calculate_stats(level, rarity, weapon_parts, weapon_accessory)
 
     return Gun(level, rarity, weapon_type, weapon_stats, weapon_parts, weapon_element, weapon_naming_info['weapon_title'], weapon_naming_info['weapon_prefix'])
-
-
-def choose_weapon_type():
-    random_integer = random.randint(0,5)
-    switcher = {
-      0: 'pistol',
-      1: 'smg',
-      2: 'assault_rifle',
-      3: 'sniper_rifle',
-      4: 'shotgun',
-      5: 'launcher'
-    }
-    return switcher.get(random_integer, "nothing")
 
 def generate_weapon_type(weapon_type):
     switcher = {
