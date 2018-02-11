@@ -25,9 +25,9 @@ while True:
 
         choice = input()
 
-        if(choice == 'a'):
+        if choice == 'a':
             choose_gear_type_to_generate()
-        elif(choice == 'b'):
+        elif choice == 'b':
             choose_enemy_type_to_drop_loot()
         else:
             print("Invalid choice, please choose a valid choice")
@@ -40,15 +40,15 @@ while True:
 
         choice = input()
 
-        if(choice == 'a'):
+        if choice == 'a':
             choose_gear_rarity_and_level(weapon_generation)
-        elif(choice == 'b'):
+        elif choice == 'b':
             choose_gear_rarity_and_level(shield_generation)
-        elif(choice == 'c'):
+        elif choice == 'c':
             choose_gear_rarity_and_level(grenade_mod_generation)
-        elif(choice == 'd'):
+        elif choice == 'd':
             choose_gear_rarity_and_level(class_mod_generation)
-        elif(choice == 'e'):
+        elif choice == 'e':
             choose_gear_rarity_and_level(relic_generation)
         else:
             print("Invalid choice, please choose a valid choice")
@@ -72,7 +72,7 @@ while True:
 
             rarity = switcher.get(choice, 'nothing')
 
-            if(rarity == 'nothing'):
+            if rarity == 'nothing':
                 print("Invald choice, please choose a valid choice")
                 return choose_rarity()
 
@@ -120,7 +120,7 @@ while True:
 
         enemy_type = switcher.get(choice, 'nothing')
 
-        if(enemy_type == 'nothing'):
+        if enemy_type == 'nothing':
             print("Invald choice, please choose a valid choice")
             return choose_enemy_type_to_drop_loot()
 
