@@ -31,7 +31,7 @@ while True:
             choose_enemy_type_to_drop_loot()
         else:
             print("Invalid choice, please choose a valid choice")
-            initial_choice()
+            return initial_choice()
 
     def choose_gear_type_to_generate():
 
@@ -52,7 +52,7 @@ while True:
             choose_gear_rarity_and_level(relic_generation)
         else:
             print("Invalid choice, please choose a valid choice")
-            choose_gear_type_to_generate()
+            return choose_gear_type_to_generate()
 
     def choose_gear_rarity_and_level(gear_generation_module):
 
@@ -74,7 +74,7 @@ while True:
 
             if(rarity == 'nothing'):
                 print("Invald choice, please choose a valid choice")
-                choose_rarity()
+                return choose_rarity()
 
             return rarity
 
