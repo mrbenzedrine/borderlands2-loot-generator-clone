@@ -122,6 +122,7 @@ while True:
 
         if(enemy_type == 'nothing'):
             print("Invald choice, please choose a valid choice")
+            return choose_enemy_type_to_drop_loot()
 
         enemy_class_switcher = {
             'Chump': Chump,
