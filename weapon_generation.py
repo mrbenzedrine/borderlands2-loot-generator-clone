@@ -39,13 +39,12 @@ def generate(rarity, level):
             is_manufacturer_element_valid = general_weapon_functions.is_general_manufacturer_element_combo_valid(weapon_parts['body'], weapon_element)
 
         is_rarity_element_valid = general_weapon_functions.is_rarity_element_combo_valid(rarity, weapon_element)
+        print("%s is %s " % (weapon_type, weapon_element))
         if is_weapon_element_valid and is_manufacturer_element_valid and is_rarity_element_valid:
             print("Valid weapon element combo")
-            print("%s is %s " % (weapon_type, weapon_element))
             break
         else:
             print("Invalid weapon element combo")
-            print("%s is %s " % (weapon_type, weapon_element))
             weapon_element = weapon_module.choose_element(weapon_parts['body'])
 
 
