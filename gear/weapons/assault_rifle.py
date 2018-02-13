@@ -37,31 +37,21 @@ def generate(rarity):
 
     return weapon_parts    
 
-
-
 def choose_assault_rifle_part_manufacturer():
-    random_integer = random.randint(0,4)
-    switcher = {
-        0: 'Bandit',
-        1: 'Dahl',
-        2: 'Jakobs',
-        3: 'Torgue',
-        4: 'Vladof'
-    }
-    return switcher.get(random_integer, 'nothing')
+    manufacturers = ['Bandit', 'Dahl', 'Jakobs', 'Torgue', 'Vladof']
+    return random.choice(manufacturers)
 
 def choose_accessory():
-    random_integer = random.randint(0,6)
-    switcher = {
-        0: 'damage',
-        1: 'fire_rate',
-        2: 'melee',
-        3: 'bullet_speed',
-        4: 'stability',
-        5: 'magazine_size',
-        6: 'accuracy'
-    }
-    return switcher.get(random_integer, 'none')
+    accessories = [
+        'damage',
+        'fire_rate',
+        'melee',
+        'bullet_speed',
+        'stability',
+        'magazine_size',
+        'accuracy'
+    ]
+    return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
     if(weapon_manufacturer == 'Jakobs'):
