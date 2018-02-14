@@ -6,7 +6,7 @@ def generate(rarity):
 
     body_manufacturer = choose_assault_rifle_part_manufacturer()
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         while True:
             if body_manufacturer == 'Torgue' or body_manufacturer == 'Jakobs':
                 # Can't have a Torgue or Jakobs E-Tech assault rifle, 
@@ -16,7 +16,7 @@ def generate(rarity):
             else:
                 break
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         barrel_manufacturer = 'E-Tech'
     else:
         barrel_manufacturer = choose_assault_rifle_part_manufacturer()
@@ -54,9 +54,9 @@ def choose_accessory():
     return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
-    if(weapon_manufacturer == 'Jakobs'):
+    if weapon_manufacturer == 'Jakobs':
         weapon_element = 'None'
-    elif(weapon_manufacturer == 'Torgue'):
+    elif weapon_manufacturer == 'Torgue':
         weapon_element = 'Explosion'
     else:
         weapon_element = general_weapon_functions.choose_weapon_element()
