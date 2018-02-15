@@ -38,15 +38,8 @@ def generate(rarity):
     return weapon_parts
 
 def choose_launcher_part_manufacturer():
-    random_integer = random.randint(0,4)
-    switcher = {
-        0: 'Bandit',
-        1: 'Maliwan',
-        2: 'Tediore',
-        3: 'Torgue',
-        4: 'Vladof'
-    }
-    return switcher.get(random_integer, 'nothing')
+    manufacturers = ['Bandit', 'Maliwan', 'Tediore', 'Torgue', 'Vladof']
+    return random.choice(manufacturers)
 
 def is_manufacturer_element_combo_valid(manufacturer, element):
 
@@ -65,18 +58,17 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
     return is_valid
 
 def choose_accessory():
-    random_integer = random.randint(0,7)
-    switcher = {
-        0: 'magazine_size',
-        1: 'accuracy',
-        2: 'melee',
-        3: 'reload_speed',
-        4: 'weapon_swap_speed',
-        5: 'rocket_speed',
-        6: 'fire_rate',
-        7: 'damage'
-    }
-    return switcher.get(random_integer, 'none')
+    accessories = [
+        'magazine_size',
+        'accuracy',
+        'melee',
+        'reload_speed',
+        'weapon_swap_speed',
+        'rocket_speed',
+        'fire_rate',
+        'damage'
+    ]
+    return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
     if(weapon_manufacturer == 'Torgue' or weapon_manufacturer == 'Bandit'):
