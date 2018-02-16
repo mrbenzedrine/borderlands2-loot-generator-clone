@@ -6,7 +6,7 @@ def generate(rarity):
 
     body_manufacturer = choose_launcher_part_manufacturer()
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         while True:
             if body_manufacturer == 'Torgue':
                 # Can't have a Torgue E-Tech launcher, roll again
@@ -16,7 +16,7 @@ def generate(rarity):
             else:
                 break
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         barrel_manufacturer = 'E-Tech'
     else:
         barrel_manufacturer = choose_launcher_part_manufacturer()
@@ -48,9 +48,9 @@ def is_manufacturer_element_combo_valid(manufacturer, element):
     # the following checks are used to override the usual rules specified in
     # is_general_manufacturer_element_combo_valid in general_weapon_functions.py
 
-    if(manufacturer == 'Bandit' or manufacturer == 'Torgue'):
+    if manufacturer == 'Bandit' or manufacturer == 'Torgue':
         is_valid = element == 'Explosion'
-    elif(manufacturer == 'Maliwan'):
+    elif manufacturer == 'Maliwan':
         is_valid = (element != 'None' and element != 'Explosion')
     else:
         is_valid = element != 'None'
@@ -71,7 +71,7 @@ def choose_accessory():
     return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
-    if(weapon_manufacturer == 'Torgue' or weapon_manufacturer == 'Bandit'):
+    if weapon_manufacturer == 'Torgue' or weapon_manufacturer == 'Bandit':
         weapon_element = 'Explosion'
     else:
         weapon_element = general_weapon_functions.choose_weapon_element()
