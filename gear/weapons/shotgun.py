@@ -38,28 +38,20 @@ def generate(rarity):
     return weapon_parts
 
 def choose_shotgun_part_manufacturer():
-    random_integer = random.randint(0,4)
-    switcher = {
-        0: 'Bandit',
-        1: 'Hyperion',
-        2: 'Jakobs',
-        3: 'Tediore',
-        4: 'Torgue'
-    }
-    return switcher.get(random_integer, 'nothing')
+    manufacturers = ['Bandit', 'Hyperion', 'Jakobs', 'Tediore', 'Torgue']
+    return random.choice(manufacturers)
 
 def choose_accessory():
-    random_integer = random.randint(0,6)
-    switcher = {
-        0: 'melee',
-        1: 'magazine_size',
-        2: 'projectile_count',
-        3: 'bullet_speed',
-        4: 'critical_damage',
-        5: 'reload_speed',
-        6: 'stability'
-    }
-    return switcher.get(random_integer, 'none')
+    accessories = [
+        'melee',
+        'magazine_size',
+        'projectile_count',
+        'bullet_speed',
+        'critical_damage',
+        'reload_speed',
+        'stability'
+    ]
+    return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
     if(weapon_manufacturer == 'Jakobs'):
