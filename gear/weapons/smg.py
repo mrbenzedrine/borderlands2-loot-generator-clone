@@ -27,31 +27,20 @@ def generate(rarity):
 
     return weapon_parts
 
-
 def choose_smg_part_manufacturer():
-    random_integer = random.randint(0,4)
-    switcher = {
-        0: 'Bandit',
-        1: 'Dahl',
-        2: 'Hyperion',
-        3: 'Maliwan',
-        4: 'Tediore'
-    }
-    return switcher.get(random_integer, 'nothing')
+    manufacturers = ['Bandit', 'Dahl', 'Hyperion', 'Maliwan', 'Tediore']
+    return random.choice(manufacturers)
 
 def choose_accessory():
-    # The attribute values describe the stat of the gun that is increased
-    # by the corresponding accessory
-    random_integer = random.randint(0,5)
-    switcher = {
-        0: 'melee',
-        1: 'accuracy',
-        2: 'damage',
-        3: 'bullet_speed',
-        4: 'stability',
-        5: 'reload_speed'
-    }
-    return switcher.get(random_integer, 'none')
+    accessories = [
+        'melee',
+        'accuracy',
+        'damage',
+        'bullet_speed',
+        'stability',
+        'reload_speed'
+    ]
+    return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
     # No Jakobs or Torgue smgs exist, so there are no manufacturer specific
