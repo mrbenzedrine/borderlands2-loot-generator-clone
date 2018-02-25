@@ -6,7 +6,7 @@ def generate(rarity):
 
     body_manufacturer = choose_smg_part_manufacturer()
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         barrel_manufacturer = 'E-Tech'
     else:
         barrel_manufacturer = choose_smg_part_manufacturer()
