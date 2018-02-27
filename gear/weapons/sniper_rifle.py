@@ -6,7 +6,7 @@ def generate(rarity):
 
     body_manufacturer = choose_sniper_rifle_part_manufacturer()
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         while True:
             if body_manufacturer == 'Jakobs':
                 # Can't have a Jakobs E-Tech sniper rifle, roll again
@@ -15,7 +15,7 @@ def generate(rarity):
             else:
                 break
 
-    if(rarity == 'E-Tech'):
+    if rarity == 'E-Tech':
         barrel_manufacturer = 'E-Tech'
     else:
         barrel_manufacturer = choose_sniper_rifle_part_manufacturer()
@@ -53,7 +53,7 @@ def choose_accessory():
     return random.choice(accessories)
 
 def choose_element(weapon_manufacturer):
-    if(weapon_manufacturer == 'Jakobs'):
+    if weapon_manufacturer == 'Jakobs':
         weapon_element = 'None'
     else:
         weapon_element = general_weapon_functions.choose_weapon_element()
