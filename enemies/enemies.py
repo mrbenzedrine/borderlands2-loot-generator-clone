@@ -30,6 +30,21 @@ class Enemy:
 
         return self.dropped_loot
 
+    def calculate_potential_loot_rarity(self):
+
+        random_value = random.random()
+
+        if random_value <= self.potential_loot_probabilities['Blue']:
+            potential_rarity = 'Blue'
+        elif random_value > self.potential_loot_probabilities['Blue'] and random_value <= self.potential_loot_probabilities['Blue'] + self.potential_loot_probabilities['Purple']:
+            potential_rarity = 'Purple'
+        elif random_value > self.potential_loot_probabilities['Blue'] + self.potential_loot_probabilities['Purple'] and random_value <= self.potential_loot_probabilities['Blue'] + self.potential_loot_probabilities['Purple'] + self.potential_loot_probabilities['Orange']:
+            potential_rarity = 'Orange'
+        else:
+            potential_rarity = self.choose_white_or_green_rarity()
+
+        return potential_rarity
+
     def calculate_potential_loot_dropped(self):
 
         # Contains methods and attributes that will be defined in
@@ -80,45 +95,11 @@ class Chump(Enemy):
 
         self.potential_loot_quantity = 1
 
-        # Not sure yet how to use this data to generate the same 
-        # functionality as the calculate_potential_loot_rarity() method
-
-        # self.potential_loot_pool = (
-        #     {
-        #         'rarity': 'Blue',
-        #         'probability': 1/10
-        #     },
-        #     {
-        #         'rarity': 'Purple',
-        #         'probability': 1/100
-        #     },
-        #     {
-        #         'rarity': 'Orange',
-        #         'probability': 1/500
-        #     },
-        #     {
-        #         'rarity': 'Other', # meaning the raritites in the guaranteed rarity pool 
-        #         'probability': 1 - (1/10 + 1/100 + 1/500)
-        #     }   
-        # )
-
-    def calculate_potential_loot_rarity(self):
-
-        # Need to do a probability roll on what should the item be from
-        # the potential loot pool
-
-        random_value = random.random()
-
-        if(random_value <= 1/10):
-            potential_rarity = 'Blue'
-        elif(random_value > 1/10 and random_value <= 1/10 + 1/100):
-            potential_rarity = 'Purple'
-        elif(random_value > 1/10 + 1/100 and random_value <= 1/10 + 1/100 + 1/500):
-            potential_rarity = 'Orange'
-        else:
-            potential_rarity = self.choose_white_or_green_rarity()
-
-        return potential_rarity
+        self.potential_loot_probabilities = {
+            'Blue': 1/10,
+            'Purple': 1/100,
+            'Orange': 1/500
+        }
 
 class Badass(Enemy):
 
@@ -139,20 +120,11 @@ class Badass(Enemy):
 
         self.potential_loot_quantity = 1
 
-    def calculate_potential_loot_rarity(self):
-
-        random_value = random.random()
-
-        if(random_value <= 1/8):
-            potential_rarity = 'Blue'
-        elif(random_value > 1/8 and random_value <= 1/8 + 1/80):
-            potential_rarity = 'Purple'
-        elif(random_value > 1/8 + 1/80 and random_value <= 1/8 + 1/80 + 1/450):
-            potential_rarity = 'Orange'
-        else:
-            potential_rarity = self.choose_white_or_green_rarity()
-
-        return potential_rarity
+        self.potential_loot_probabilities = {
+            'Blue': 1/8,
+            'Purple': 1/80,
+            'Orange': 1/450
+        }
 
 class SuperBadass(Enemy):
 
@@ -177,20 +149,11 @@ class SuperBadass(Enemy):
 
         self.potential_loot_quantity = 1
 
-    def calculate_potential_loot_rarity(self):
-
-        random_value = random.random()
-
-        if(random_value <= 1/7):
-            potential_rarity = 'Blue'
-        elif(random_value > 1/7 and random_value <= 1/7 + 1/70):
-            potential_rarity = 'Purple'
-        elif(random_value > 1/7 + 1/70 and random_value <= 1/7 + 1/70 + 1/400):
-            potential_rarity = 'Orange'
-        else:
-            potential_rarity = self.choose_white_or_green_rarity()
-
-        return potential_rarity
+        self.potential_loot_probabilities = {
+            'Blue': 1/7,
+            'Purple': 1/70,
+            'Orange': 1/400
+        }
 
 class UltimateBadass(Enemy):
 
@@ -219,20 +182,11 @@ class UltimateBadass(Enemy):
 
         self.potential_loot_quantity = 1
 
-    def calculate_potential_loot_rarity(self):
-
-        random_value = random.random()
-
-        if(random_value <= 1/6):
-            potential_rarity = 'Blue'
-        elif(random_value > 1/6 and random_value <= 1/6 + 1/65):
-            potential_rarity = 'Purple'
-        elif(random_value > 1/6 + 1/65 and random_value <= 1/6 + 1/65 + 1/350):
-            potential_rarity = 'Orange'
-        else:
-            potential_rarity = self.choose_white_or_green_rarity()
-
-        return potential_rarity
+        self.potential_loot_probabilities = {
+            'Blue': 1/6,
+            'Purple': 1/65,
+            'Orange': 1/350
+        }
 
 class Chubby(Enemy):
 
@@ -261,20 +215,11 @@ class Chubby(Enemy):
 
         self.potential_loot_quantity = 1
 
-    def calculate_potential_loot_rarity(self):
-
-        random_value = random.random()
-
-        if(random_value <= 1/5):
-            potential_rarity = 'Blue'
-        elif(random_value > 1/5 and random_value <= 1/5 + 1/60):
-            potential_rarity = 'Purple'
-        elif(random_value > 1/5 + 1/60 and random_value <= 1/5 + 1/60 + 1/325):
-            potential_rarity = 'Orange'
-        else:
-            potential_rarity = self.choose_white_or_green_rarity()
-
-        return potential_rarity
+        self.potential_loot_probabilities = {
+            'Blue': 1/5,
+            'Purple': 1/60,
+            'Orange': 1/325
+        }
 
 class RaidBoss(Enemy):
 
@@ -307,17 +252,8 @@ class RaidBoss(Enemy):
 
         self.potential_loot_quantity = 4
 
-    def calculate_potential_loot_rarity(self):
-
-        random_value = random.random()
-
-        if(random_value <= 1/5):
-            potential_rarity = 'Blue'
-        elif(random_value > 1/5 and random_value <= 1/5 + 1/55):
-            potential_rarity = 'Purple'
-        elif(random_value > 1/5 + 1/55 and random_value <= 1/5 + 1/55 + 1/300):
-            potential_rarity = 'Orange'
-        else:
-            potential_rarity = self.choose_white_or_green_rarity()
-
-        return potential_rarity
+        self.potential_loot_probabilities = {
+            'Blue': 1/5,
+            'Purple': 1/55,
+            'Orange': 1/300
+        }
