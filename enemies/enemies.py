@@ -22,11 +22,8 @@ class Enemy:
 
         all_dropped_loot = self.guaranteed_loot_pool + self.calculate_potential_loot_dropped()
 
-        # Now need to iterate through all_dropped_loot and increment the
-        # corresponding rarity quantity
-
-        for x in range(0, len(all_dropped_loot)):
-            self.dropped_loot[all_dropped_loot[x]['rarity']] = self.dropped_loot[all_dropped_loot[x]['rarity']] + all_dropped_loot[x]['quantity']
+        for item in all_dropped_loot:
+            self.dropped_loot[item['rarity']] += item['quantity']
 
         return self.dropped_loot
 
