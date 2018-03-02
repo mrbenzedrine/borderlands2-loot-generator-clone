@@ -64,7 +64,7 @@ class Enemy:
 
         random_value = random.random()
 
-        if(random_value < 0.55):
+        if random_value < 0.55:
             rarity = 'White'
         else:
             rarity = 'Green'
