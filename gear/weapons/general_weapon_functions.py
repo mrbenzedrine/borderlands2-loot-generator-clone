@@ -1,16 +1,15 @@
 import random
 
 def choose_weapon_element():
-    random_integer = random.randint(0,5)
-    switcher = {
-        0: "None",
-        1: 'Incendiary',
-        2: 'Corrosion',
-        3: 'Explosion',
-        4: 'Shock',
-        5: 'Slag'
-    }
-    return switcher.get(random_integer, "nothing")
+    elements = [
+        'None',
+        'Incendiary',
+        'Corrosion',
+        'Explosion',
+        'Shock',
+        'Slag'
+    ]
+    return random.choice(elements)
 
 def is_general_weapon_element_combo_valid(weapon_type, weapon_element):
 
