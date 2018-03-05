@@ -49,19 +49,18 @@ def generate(rarity, level):
     return Shield(level, rarity, shield_type, shield_stats, shield_manufacturer, shield_parts)
 
 def choose_shield_type():
-    random_integer = random.randint(0,8)
-    switcher = {
-        0: 'shield',
-        1: 'absorb',
-        2: 'adaptive',
-        3: 'amplify',
-        4: 'booster',
-        5: 'nova',
-        6: 'spike',
-        7: 'roid',
-        8: 'turtle'
-    }
-    return switcher.get(random_integer, 'nothing')
+    types = [
+        'shield',
+        'absorb',
+        'adaptive',
+        'amplify',
+        'booster',
+        'nova',
+        'spike',
+        'roid',
+        'turtle'
+    ]
+    return random.choice(types)
 
 def get_shield_manufacturer(shield_type):
     switcher = {
@@ -78,29 +77,24 @@ def get_shield_manufacturer(shield_type):
     return switcher.get(shield_type, 'nothing')
 
 def choose_nova_spike_manufacturer():
-    random_integer = random.randint(0,1)
-    switcher = {
-        0: 'Maliwan',
-        1: 'Torgue'
-    }
-    return switcher.get(random_integer, 'nothing')
+    manufacturers = ['Maliwan', 'Torgue']
+    return random.choice(manufacturers)
 
 def generate_manufacturer():
     # No non-unique Jakobs shields exist, so Jakobs don't produce
     # shields in general or shield parts
-    random_integer = random.randint(0,8)
-    switcher = {
-        0: 'Anshin',
-        1: 'Bandit',
-        2: 'Dahl',
-        3: 'Hyperion',
-        4: 'Maliwan',
-        5: 'Pangolin',
-        6: 'Tediore',
-        7: 'Torgue',
-        8: 'Vladof'
-    }
-    return switcher.get(random_integer, 'nothing')
+    manufacturers = [
+        'Anshin',
+        'Bandit',
+        'Dahl',
+        'Hyperion',
+        'Maliwan',
+        'Pangolin',
+        'Tediore',
+        'Torgue',
+        'Vladof'
+    ]
+    return random.choice(manufacturers)
 
 def get_shield_type_generation_module(shield_type):
     switcher = {
