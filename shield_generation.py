@@ -36,7 +36,7 @@ def generate(rarity, level):
     shield_type_generation_module = get_shield_type_generation_module(shield_type)
     shield_main_stats = shield_type_generation_module.calculate_main_stats(level, rarity)
 
-    if(shield_type == 'nova' or shield_type == 'spike'):
+    if shield_type == 'nova' or shield_type == 'spike':
         shield_type_specific_stats = shield_type_generation_module.calculate_type_specific_stats(level, rarity, shield_manufacturer)
     else:
         shield_type_specific_stats = shield_type_generation_module.calculate_type_specific_stats(level, rarity)
