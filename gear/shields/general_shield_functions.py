@@ -1,14 +1,8 @@
 import random
 
 def choose_element():
-    random_integer = random.randint(0,3)
-    switcher = {
-        0: 'Incendiary',
-        1: 'Corrosion',
-        2: 'Shock',
-        3: 'Explosion'
-    }
-    return switcher.get(random_integer, 'nothing')
+    elements = ['Incendiary', 'Corrosion', 'Shock', 'Explosion']
+    return random.choice(elements)
 
 def get_valid_nova_spike_manufacturer_element_combo(manufacturer, element, type):
     generated_element = element #set generated_element to be the same as element for now
