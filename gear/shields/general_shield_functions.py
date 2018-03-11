@@ -20,14 +20,13 @@ def get_valid_nova_spike_manufacturer_element_combo(manufacturer, element, type)
 
 def is_nova_spike_manufacturer_element_combo_valid(manufacturer, element):
     # Maliwan shields can only be incendiary, corrosion or shock, and
-    # Torgue shields can only be
+    # Torgue shields can only be explosive
 
-    test_1 = True
-    test_2 = True
+    test = True
 
     if manufacturer == 'Maliwan':
-        test_1 = (element != 'Explosion')
+        test = (element != 'Explosion')
     elif manufacturer == 'Torgue':
-        test_2 = (element == 'Explosion')
+        test = (element == 'Explosion')
 
-    return test_1 and test_2
+    return test
